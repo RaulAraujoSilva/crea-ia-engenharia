@@ -13,6 +13,9 @@ import WhereAIFails from './sections/10-WhereAIFails'
 import HallucinationRates from './sections/11-HallucinationRates'
 import Poll from './sections/12-Poll'
 import AgenticFrontier from './sections/13-AgenticFrontier'
+import TextToBIM from './sections/13B-TextToBIM'
+import WorldModels from './sections/13C-WorldModels'
+import DigitalTwins from './sections/13D-DigitalTwins'
 import ToolsToTry from './sections/14-ToolsToTry'
 import LiveDemo from './sections/15-LiveDemo'
 import CREARole from './sections/16-CREARole'
@@ -50,6 +53,9 @@ function App() {
 
         {/* A Fronteira e Ferramentas */}
         <AgenticFrontier />
+        <TextToBIM />
+        <WorldModels />
+        <DigitalTwins />
         <ToolsToTry />
         <LiveDemo />
 
