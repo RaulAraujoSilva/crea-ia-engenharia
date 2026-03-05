@@ -1,0 +1,92 @@
+import { useState, useEffect } from 'react'
+import Icon from './Icon'
+
+const sections = [
+  { id: 'hero', label: 'Início', icon: 'home' },
+  { id: 'speaker', label: 'Palestrante', icon: 'user' },
+  { id: 'hype-vs-reality', label: 'O Hype', icon: 'alert-triangle' },
+  { id: 'quiz', label: 'Quiz', icon: 'bar-chart' },
+  { id: 'where-ai-works', label: 'Onde Funciona', icon: 'check-circle' },
+  { id: 'cases-compliance', label: 'Compliance', icon: 'check-square' },
+  { id: 'cases-takeoff', label: 'Orçamentos', icon: 'file-text' },
+  { id: 'cases-inspection', label: 'Inspeção', icon: 'camera' },
+  { id: 'cases-energy', label: 'Energia', icon: 'zap' },
+  { id: 'practical-examples', label: 'Na Pratica', icon: 'play' },
+  { id: 'where-ai-fails', label: 'Onde Falha', icon: 'shield' },
+  { id: 'hallucination-rates', label: 'Alucinações', icon: 'eye-off' },
+  { id: 'poll', label: 'Poll', icon: 'message-circle' },
+  { id: 'agentic-frontier', label: 'Fronteira', icon: 'bot' },
+  { id: 'tools-to-try', label: 'Ferramentas', icon: 'cpu' },
+  { id: 'live-demo', label: 'Demo', icon: 'play' },
+  { id: 'crea-role', label: 'CREA', icon: 'scale' },
+  { id: 'closing', label: 'Encerramento', icon: 'check-circle' },
+]
+
+export default function Navbar() {
+  const [active, setActive] = useState('hero')
+  const [collapsed, setCollapsed] = useState(true)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id)
+          }
+        })
+      },
+      { threshold: 0.3 }
+    )
+
+    sections.forEach(({ id }) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    setCollapsed(true)
+  }
+
+  return (
+    <>
+      <button
+        onClick={() => setCollapsed(!collapsed)}
+        className="fixed top-4 left-4 z-[60] lg:hidden bg-city-navy text-white p-2 rounded-lg shadow-lg"
+      >
+        <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d={collapsed ? "M4 6h16M4 12h16M4 18h16" : "M6 18L18 6M6 6l12 12"} />
+        </svg>
+      </button>
+
+      <nav
+        className={`fixed left-0 top-0 h-full z-50 bg-city-navy/95 backdrop-blur-sm text-white
+          transition-transform duration-300 w-56
+          ${collapsed ? '-translate-x-full lg:translate-x-0 lg:w-16 lg:hover:w-56' : 'translate-x-0'}
+          group overflow-hidden`}
+      >
+        <div className="p-3 border-b border-white/10 flex items-center gap-2 h-[52px]">
+          <Icon name="cpu" size={22} className="text-city-cyan shrink-0" />
+          <span className="text-xs font-bold opacity-0 lg:group-hover:opacity-100 transition-opacity whitespace-nowrap text-city-cyan">IA na Engenharia</span>
+        </div>
+
+        <div className="overflow-y-auto h-[calc(100%-52px)] py-2">
+          {sections.map(({ id, label, icon }) => (
+            <button
+              key={id}
+              onClick={() => scrollTo(id)}
+              className={`w-full flex items-center gap-3 px-4 py-2 text-left text-sm transition-all
+                ${active === id ? 'bg-city-cyan/20 text-city-cyan border-r-3 border-city-cyan' : 'hover:bg-white/10 text-white/70 hover:text-white'}`}
+            >
+              <Icon name={icon} size={16} className="shrink-0" />
+              <span className="whitespace-nowrap opacity-0 lg:group-hover:opacity-100 transition-opacity">{label}</span>
+            </button>
+          ))}
+        </div>
+      </nav>
+    </>
+  )
+}
