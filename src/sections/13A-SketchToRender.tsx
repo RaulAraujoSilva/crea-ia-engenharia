@@ -73,7 +73,7 @@ export default function SketchToRender() {
             transition={{ delay: i * 0.1 }}
             className="group block rounded-2xl overflow-hidden border border-gray-200 hover:border-city-blue hover:shadow-xl transition-all"
           >
-            <div className="h-36 overflow-hidden bg-gray-100">
+            <div className="h-28 overflow-hidden bg-gray-100">
               <img
                 src={tool.img}
                 alt={tool.name}
