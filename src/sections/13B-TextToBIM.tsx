@@ -1,152 +1,104 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Section from '../components/Section'
-import Icon from '../components/Icon'
-import StatCounter from '../components/StatCounter'
-import ImageLightbox from '../components/ImageLightbox'
 
-const TOOLS = [
+const tools = [
   {
-    icon: 'cpu',
+    name: 'Hypar',
+    desc: 'Pioneiro em Text-to-BIM. Converte parâmetros textuais em modelos paramétricos, exporta direto para Revit. Templates reutilizáveis por escritório.',
+    url: 'https://hypar.io',
+    img: './img/frontier/bim-hypar.jpg',
+    metric: 'Code-first + Revit export',
     color: '#6B48FF',
-    title: 'Text2BIM (TU Munich)',
-    description: 'Framework multi-agente LLM integrado ao Vectorworks. Gera edificios completos a partir de texto: layouts internos, envelopes, informacao semantica IFC. Codigo aberto no GitHub.',
-    metrics: 'GPT-5 mini: 83% acuracia | Claude Sonnet 4.5: 100% edicao semantica',
-    url: 'https://github.com/dcy0577/Text2BIM',
   },
   {
-    icon: 'layers',
+    name: 'Snaptrude',
+    desc: 'De um RFP ou briefing textual para modelo BIM editável (LOD 300) em 7-10 minutos. Exporta RVT nativo.',
+    url: 'https://www.snaptrude.com',
+    img: './img/frontier/bim-snaptrude.jpg',
+    metric: 'RFP → LOD 300 em 7-10 min',
     color: '#0047AB',
-    title: 'TestFit',
-    description: 'Gera 3.000 site plans validos em menos de 10 segundos. Usado por Perkins & Will, WATG e DLR Group para viabilidade imobiliaria e otimizacao de terrenos.',
-    metrics: '3.000 planos em <10s | Usado por Top 20 firmas de arquitetura',
-    url: 'https://www.testfit.io/',
   },
   {
-    icon: 'globe',
+    name: 'TestFit',
+    desc: 'IA generativa para viabilidade de terreno. Testa milhares de variações instantaneamente com contagem de unidades e custos.',
+    url: 'https://testfit.io',
+    img: './img/frontier/bim-testfit.jpg',
+    metric: '3.000 planos em <10s',
     color: '#00B4D8',
-    title: 'Digital Blue Foam',
-    description: 'Geracao de volumetria + fachadas + analises ambientais (sol, vento, energia). Exporta IFC nativo e sincroniza com ArchiCAD em tempo real. 90% mais rapido que modelagem manual.',
-    metrics: '90% reducao de tempo | Exporta IFC | Integra ArchiCAD/Revit',
-    url: 'https://www.digitalbluefoam.com/',
   },
   {
-    icon: 'settings',
+    name: 'Finch 3D',
+    desc: 'Gera plantas otimizadas por adjacência, circulação e iluminação natural. Integração bidirecional com Rhino, Grasshopper e Revit.',
+    url: 'https://www.finch3d.com',
+    img: './img/frontier/bim-finch3d.jpg',
+    metric: 'Otimização paramétrica',
     color: '#2DC653',
-    title: 'Autodesk Neural CAD',
-    description: 'Modelo foundation 3D generativo para Forma e Fusion. Promete automatizar 80-90% das tarefas repetitivas de design. Analisa milhares de opcoes de terreno automaticamente.',
-    metrics: '80-90% automacao | Foundation model 3D | Integrado ao Forma',
-    url: 'https://adsknews.autodesk.com/en/news/upcoming-3d-generative-ai-foundation-models/',
   },
-]
-
-const FLOW_STEPS = [
-  { step: 1, label: 'Prompt em linguagem natural', icon: 'message-square', color: '#6B48FF' },
-  { step: 2, label: 'LLM interpreta e gera codigo', icon: 'cpu', color: '#0047AB' },
-  { step: 3, label: 'API BIM cria geometria e semantica', icon: 'layers', color: '#00B4D8' },
-  { step: 4, label: 'Model checker valida', icon: 'check-square', color: '#2DC653' },
-  { step: 5, label: 'Agentes corrigem iterativamente', icon: 'settings', color: '#FF6B35' },
-  { step: 6, label: 'Modelo IFC editavel exportado', icon: 'file-text', color: '#6B48FF' },
+  {
+    name: 'Swapp AI',
+    desc: 'Do design esquemático à documentação de construção completa. Conformidade automática com códigos. Redução de 70% no tempo.',
+    url: 'https://swapp.ai',
+    img: './img/frontier/bim-swapp.jpg',
+    metric: '70% redução documentação',
+    color: '#FF6B35',
+  },
+  {
+    name: 'Architechtures',
+    desc: 'IA generativa para projetos residenciais. Gera modelo BIM em tempo real a partir de parâmetros do terreno e programa de necessidades.',
+    url: 'https://architechtures.com',
+    img: './img/frontier/bim-architechtures.jpg',
+    metric: 'BIM residencial em tempo real',
+    color: '#E86D00',
+  },
 ]
 
 export default function TextToBIM() {
-  const [lightbox, setLightbox] = useState(false)
-
   return (
-    <Section id="text-to-bim" title="Text-to-BIM" subtitle="Do texto ao modelo 3D — a nova fronteira da modelagem">
-      {/* Hero image */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        className="mb-10 rounded-2xl overflow-hidden shadow-lg cursor-pointer"
-        onClick={() => setLightbox(true)}
-      >
-        <img
-          src="./img/pratica/text2bim-hero.png"
-          alt="Text-to-BIM: do texto ao modelo"
-          className="w-full h-64 object-cover"
-          loading="lazy"
-        />
-      </motion.div>
-
-      {/* Flow diagram */}
-      <div className="mb-10">
-        <h3 className="text-lg font-bold text-city-navy mb-4">Como funciona</h3>
-        <div className="flex flex-wrap items-center justify-center gap-2">
-          {FLOW_STEPS.map((s, i) => (
-            <motion.div
-              key={s.step}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="flex items-center gap-2"
-            >
-              <div className="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-3 shadow-sm">
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${s.color}15` }}>
-                  <Icon name={s.icon} size={16} style={{ color: s.color }} />
-                </div>
-                <div>
-                  <span className="text-xs font-bold" style={{ color: s.color }}>Passo {s.step}</span>
-                  <p className="text-xs text-gray-600">{s.label}</p>
-                </div>
-              </div>
-              {i < FLOW_STEPS.length - 1 && (
-                <Icon name="arrow-up-right" size={16} className="text-gray-300 rotate-45 shrink-0 hidden md:block" />
-              )}
-            </motion.div>
-          ))}
-        </div>
+    <Section id="text-to-bim" title="Text-to-BIM: Ferramentas Comerciais" subtitle="De descrição textual a modelo BIM paramétrico — já é realidade">
+      {/* Intro */}
+      <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl p-6 mb-12 border border-indigo-100">
+        <p className="text-gray-700 leading-relaxed">
+          Diferente de IA generativa que cria imagens, estas ferramentas geram <strong>modelos paramétricos reais</strong> —
+          com informação semântica BIM (paredes, lajes, aberturas), exportáveis em <strong>IFC e RVT</strong>,
+          editáveis em Revit, ArchiCAD ou qualquer software BIM.
+        </p>
       </div>
 
-      {/* Tool cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        {TOOLS.map((tool, i) => (
+      {/* Tools grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {tools.map((tool, i) => (
           <motion.a
-            key={i}
+            key={tool.name}
             href={tool.url}
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            whileHover={{ y: -4, boxShadow: '0 20px 40px -12px rgba(0,0,0,0.15)' }}
-            className="block bg-white rounded-2xl border border-gray-100 p-6 shadow-sm transition-all group"
+            transition={{ delay: i * 0.08 }}
+            className="group block rounded-2xl overflow-hidden border border-gray-200 hover:border-city-blue hover:shadow-xl transition-all"
           >
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${tool.color}15` }}>
-                <Icon name={tool.icon} size={20} style={{ color: tool.color }} />
+            <div className="h-40 overflow-hidden bg-gray-100">
+              <img
+                src={tool.img}
+                alt={tool.name}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
+            <div className="p-4">
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="font-bold text-city-navy">{tool.name}</h4>
+                <div className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: tool.color }} />
               </div>
-              <h3 className="text-lg font-bold text-city-navy group-hover:text-city-blue transition-colors">{tool.title}</h3>
-            </div>
-            <p className="text-sm text-gray-600 leading-relaxed mb-3">{tool.description}</p>
-            <div className="bg-gray-50 rounded-lg px-3 py-2 mb-3">
-              <p className="text-xs font-semibold text-gray-500">{tool.metrics}</p>
-            </div>
-            <div className="flex items-center gap-1 text-xs font-semibold group-hover:text-city-cyan transition-colors" style={{ color: tool.color }}>
-              <Icon name="external-link" size={12} />
-              Ver mais
+              <p className="text-sm text-gray-600 leading-relaxed mb-3">{tool.desc}</p>
+              <div className="bg-gray-50 rounded-lg px-3 py-2">
+                <p className="text-xs font-bold" style={{ color: tool.color }}>{tool.metric}</p>
+              </div>
             </div>
           </motion.a>
         ))}
       </div>
-
-      {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-city-navy/5 rounded-2xl p-8">
-        <StatCounter value={83} suffix="%" label="acuracia de querying BIM com GPT-5 mini (MCP4IFC, 2025)" />
-        <StatCounter value={3000} label="site plans gerados em menos de 10 segundos (TestFit)" />
-        <StatCounter value={90} suffix="%" label="reducao de tempo com Digital Blue Foam + ArchiCAD" />
-      </div>
-
-      {lightbox && (
-        <ImageLightbox
-          src="./img/pratica/text2bim-hero.png"
-          alt="Text-to-BIM"
-          onClose={() => setLightbox(false)}
-        />
-      )}
     </Section>
   )
 }

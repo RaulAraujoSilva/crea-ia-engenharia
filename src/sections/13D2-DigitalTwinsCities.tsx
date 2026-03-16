@@ -1,0 +1,104 @@
+import { motion } from 'framer-motion'
+import Section from '../components/Section'
+import Icon from '../components/Icon'
+
+const cities = [
+  {
+    name: 'Virtual Singapore',
+    country: 'Singapura',
+    desc: 'Primeiro digital twin de um país inteiro. Modelo 3D semântico com dados de tráfego, clima, energia e população em tempo real. Referência mundial em planejamento urbano inteligente.',
+    highlights: ['Planejamento urbano', 'Defesa civil', 'Sustentabilidade'],
+    img: './img/frontier/dt-singapore.jpg',
+    color: '#6B48FF',
+  },
+  {
+    name: 'Helsinki 3D',
+    country: 'Finlândia',
+    desc: 'Meta de carbono zero até 2035. Digital twin aberto ao público para engajamento cidadão. Simula impacto de novas construções em sombra, vento e tráfego.',
+    highlights: ['Carbono zero 2035', 'Dados abertos', 'Engajamento público'],
+    img: './img/frontier/dt-helsinki.jpg',
+    color: '#00B4D8',
+  },
+  {
+    name: 'Zurique Digital Twin',
+    country: 'Suíça',
+    desc: 'Integra dados de 25 departamentos municipais. Plataforma aberta para pesquisadores e urbanistas. Foco em simulação de clima urbano e planejamento de infraestrutura verde.',
+    highlights: ['25 departamentos', 'Open data', 'Clima urbano'],
+    img: './img/frontier/dt-zurich.jpg',
+    color: '#2DC653',
+  },
+  {
+    name: 'Barcelona Supercomputing',
+    country: 'Espanha',
+    desc: 'Usa o supercomputador MareNostrum para simulações urbanas de alta resolução. Debate ativo sobre privacidade de dados e governança do digital twin.',
+    highlights: ['MareNostrum', 'Alta resolução', 'Governança de dados'],
+    img: './img/frontier/dt-barcelona.jpg',
+    color: '#FF6B35',
+  },
+]
+
+const useCases = [
+  { icon: 'zap', label: 'Energia', desc: 'Otimizar consumo em tempo real com dados de sensores IoT', color: '#FF6B35' },
+  { icon: 'shield', label: 'Resiliência', desc: 'Simular enchentes, incêndios e evacuações antes que aconteçam', color: '#C62828' },
+  { icon: 'trending-up', label: 'Mobilidade', desc: 'Prever congestionamento e otimizar rotas de transporte público', color: '#0047AB' },
+  { icon: 'globe', label: 'Sustentabilidade', desc: 'Medir pegada de carbono e planejar infraestrutura verde', color: '#2DC653' },
+]
+
+export default function DigitalTwinsCities() {
+  return (
+    <Section id="digital-twins-cities" title="Digital Twins: Cidades" subtitle="Do edifício à metrópole — o futuro do planejamento urbano" dark>
+      {/* Use cases */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        {useCases.map((uc, i) => (
+          <motion.div
+            key={uc.label}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1 }}
+            className="bg-white/5 border border-white/10 rounded-xl p-4 text-center"
+          >
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-2" style={{ backgroundColor: `${uc.color}20` }}>
+              <Icon name={uc.icon} size={20} style={{ color: uc.color }} />
+            </div>
+            <p className="font-bold text-sm text-white mb-1">{uc.label}</p>
+            <p className="text-xs text-gray-400">{uc.desc}</p>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* City cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {cities.map((city, i) => (
+          <motion.div
+            key={city.name}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1 }}
+            className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-all"
+          >
+            <div className="h-44 overflow-hidden">
+              <img src={city.img} alt={city.name} className="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div className="p-5">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: city.color }} />
+                <h4 className="font-bold text-white text-lg">{city.name}</h4>
+                <span className="text-[10px] font-bold text-gray-400 bg-white/10 px-2 py-0.5 rounded-full">{city.country}</span>
+              </div>
+              <p className="text-sm text-gray-300 leading-relaxed mb-3">{city.desc}</p>
+              <div className="flex flex-wrap gap-2">
+                {city.highlights.map(h => (
+                  <span key={h} className="text-[10px] font-semibold px-2 py-1 rounded-full border" style={{ color: city.color, borderColor: `${city.color}40`, backgroundColor: `${city.color}10` }}>
+                    {h}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </Section>
+  )
+}

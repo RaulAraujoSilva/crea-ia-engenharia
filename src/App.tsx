@@ -16,9 +16,12 @@ import WhereAIFails from './sections/10-WhereAIFails'
 import HallucinationRates from './sections/11-HallucinationRates'
 import Poll from './sections/12-Poll'
 import AgenticFrontier from './sections/13-AgenticFrontier'
+import SketchToRender from './sections/13A-SketchToRender'
+import ImageTo3D from './sections/13A2-ImageTo3D'
 import TextToBIM from './sections/13B-TextToBIM'
-import WorldModels from './sections/13C-WorldModels'
+import TextToBIMPipeline from './sections/13B2-TextToBIMPipeline'
 import DigitalTwins from './sections/13D-DigitalTwins'
+import DigitalTwinsCities from './sections/13D2-DigitalTwinsCities'
 import ToolsToTry from './sections/14-ToolsToTry'
 import LiveDemo from './sections/15-LiveDemo'
 import CREARole from './sections/16-CREARole'
@@ -59,11 +62,16 @@ function App() {
         {/* Interação */}
         <Poll />
 
-        {/* A Fronteira e Ferramentas */}
+        {/* A Fronteira */}
         <AgenticFrontier />
+        <SketchToRender />
+        <ImageTo3D />
         <TextToBIM />
-        <WorldModels />
+        <TextToBIMPipeline />
         <DigitalTwins />
+        <DigitalTwinsCities />
+
+        {/* Ferramentas */}
         <ToolsToTry />
         <LiveDemo />
 
