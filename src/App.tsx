@@ -2,9 +2,9 @@ import Navbar from './components/Navbar'
 import Hero from './sections/01-Hero'
 import Speaker from './sections/02-Speaker'
 import Evolution from './sections/02b-Evolution'
+import Benchmarks from './sections/02b2-Benchmarks'
 import TimelineLLMs from './sections/02d-TimelineLLMs'
 import ChatVsAgents from './sections/02c-ChatVsAgents'
-import HypeVsReality from './sections/03-HypeVsReality'
 import Quiz from './sections/04-Quiz'
 import WhereAIWorks from './sections/05-WhereAIWorks'
 import CasesCompliance from './sections/06-CasesCompliance'
@@ -12,16 +12,18 @@ import CasesTakeoff from './sections/07-CasesTakeoff'
 import CasesInspection from './sections/08-CasesInspection'
 import CasesEnergy from './sections/09-CasesEnergy'
 import PracticalExamples from './sections/09B-PracticalExamples'
-import WhereAIFails from './sections/10-WhereAIFails'
-import HallucinationRates from './sections/11-HallucinationRates'
-import Poll from './sections/12-Poll'
-import AgenticFrontier from './sections/13-AgenticFrontier'
+import PracticalExamples2 from './sections/09C-PracticalExamples2'
 import SketchToRender from './sections/13A-SketchToRender'
 import ImageTo3D from './sections/13A2-ImageTo3D'
 import TextToBIM from './sections/13B-TextToBIM'
 import TextToBIMPipeline from './sections/13B2-TextToBIMPipeline'
 import DigitalTwins from './sections/13D-DigitalTwins'
 import DigitalTwinsCities from './sections/13D2-DigitalTwinsCities'
+import Poll from './sections/12-Poll'
+import HypeVsReality from './sections/03-HypeVsReality'
+import HallucinationRates from './sections/11-HallucinationRates'
+import WhereAIFails from './sections/10-WhereAIFails'
+import AgenticFrontier from './sections/13-AgenticFrontier'
 import ToolsToTry from './sections/14-ToolsToTry'
 import LiveDemo from './sections/15-LiveDemo'
 import CREARole from './sections/16-CREARole'
@@ -38,11 +40,11 @@ function App() {
 
         {/* A IA Hoje */}
         <Evolution />
+        <Benchmarks />
         <TimelineLLMs />
         <ChatVsAgents />
 
-        {/* O Hype vs A Realidade */}
-        <HypeVsReality />
+        {/* Interação 1 */}
         <Quiz />
 
         {/* Onde Funciona */}
@@ -54,22 +56,26 @@ function App() {
 
         {/* Exemplos Práticos */}
         <PracticalExamples />
-
-        {/* Onde Não Funciona */}
-        <WhereAIFails />
-        <HallucinationRates />
-
-        {/* Interação */}
-        <Poll />
+        <PracticalExamples2 />
 
         {/* A Fronteira */}
-        <AgenticFrontier />
         <SketchToRender />
         <ImageTo3D />
         <TextToBIM />
         <TextToBIMPipeline />
         <DigitalTwins />
         <DigitalTwinsCities />
+
+        {/* Interação 2 */}
+        <Poll />
+
+        {/* Hype vs Realidade */}
+        <HypeVsReality />
+        <HallucinationRates />
+        <WhereAIFails />
+
+        {/* Agentes */}
+        <AgenticFrontier />
 
         {/* Ferramentas */}
         <ToolsToTry />

@@ -49,7 +49,7 @@ export default function HallucinationRates() {
       <div className="mb-12">
         <h3 className="text-lg font-bold text-city-navy mb-4">Vectara Hallucination Leaderboard (2025)</h3>
         <div className="bg-city-navy/5 rounded-2xl p-6">
-          <ResponsiveContainer width="100%" height={380}>
+          <ResponsiveContainer width="100%" height={250}>
             <BarChart data={LEADERBOARD_DATA} layout="vertical" margin={{ left: 130, right: 30 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
               <XAxis type="number" domain={[0, 40]} tick={{ fill: '#6b7280', fontSize: 12 }} unit="%" />
@@ -106,16 +106,6 @@ export default function HallucinationRates() {
         </div>
       </div>
 
-      {/* Impact quote */}
-      <div className="bg-city-red/5 border-2 border-city-red/20 rounded-2xl p-8 text-center">
-        <p className="text-2xl md:text-3xl font-bold text-city-navy mb-2">
-          US$ 67,4 bilhões
-        </p>
-        <p className="text-gray-600">
-          em perdas causadas por decisões baseadas em alucinações de IA em 2024
-        </p>
-        <p className="text-xs text-gray-400 mt-2">Fonte: AllAboutAI Industry Report, 2024</p>
-      </div>
     </Section>
   )
 }

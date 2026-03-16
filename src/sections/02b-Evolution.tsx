@@ -1,17 +1,6 @@
 import Section from '../components/Section'
 import SimpleImageLightbox from '../components/SimpleImageLightbox'
 
-const benchmarks = [
-  { name: 'TRACKING AI', url: 'https://trackingai.org/home', img: './img/benchmarks/benchmark_trackingai_home.png' },
-  { name: 'SWE-Bench', url: 'https://swebench.com', img: './img/benchmarks/benchmark_swebench.png' },
-  { name: 'Arena AI (Chatbot Arena)', url: 'https://arena.ai/leaderboard', img: './img/benchmarks/benchmark_chatbot_arena.png' },
-  { name: 'ARC-AGI', url: 'https://arcprize.org/leaderboard', img: './img/benchmarks/benchmark_arc_agi.png' },
-  { name: 'FrontierMath', url: 'https://epoch.ai/frontiermath', img: './img/benchmarks/benchmark_frontiermath.png' },
-  { name: "Humanity's Last Exam", url: 'https://lastexam.ai', img: './img/benchmarks/benchmark_humanitys_last_exam.png' },
-  { name: 'Artificial Analysis', url: 'https://artificialanalysis.ai/', img: './img/benchmarks/benchmark_artificialanalysis_intelligence.png' },
-  { name: 'IMO 2025', url: 'https://imo-official.org', img: './img/benchmarks/benchmark_imo_2025.png' },
-]
-
 const timeline = [
   { year: '2022', event: 'ChatGPT lançado', detail: 'GPT-3.5 inicia era dos chatbots' },
   { year: '2023', event: 'GPT-4 + Gemini', detail: 'Multimodalidade e raciocínio avançado' },
@@ -38,7 +27,7 @@ export default function Evolution() {
       </div>
 
       {/* Carrossel dos LLMs */}
-      <div className="mb-16 bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-8 border border-gray-200">
+      <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-8 border border-gray-200">
         <h3 className="text-2xl font-bold text-city-navy mb-2">O Carrossel dos LLMs</h3>
         <p className="text-gray-600 mb-6 max-w-3xl">
           Cada empresa anuncia <strong>"o modelo mais poderoso do mundo"</strong> — e semanas depois
@@ -89,22 +78,6 @@ export default function Evolution() {
         </div>
       </div>
 
-      {/* Benchmarks Grid */}
-      <h3 className="text-2xl font-bold text-city-navy mb-6">Benchmarks — Como Medimos a Inteligência</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {benchmarks.map(b => (
-          <a key={b.name} href={b.url} target="_blank" rel="noopener noreferrer"
-            className="group block rounded-xl overflow-hidden border border-gray-200 hover:border-city-blue hover:shadow-lg transition-all">
-            <div className="h-36 overflow-hidden bg-gray-50">
-              <img src={b.img} alt={b.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-            </div>
-            <div className="p-3 flex items-center justify-between">
-              <span className="font-semibold text-sm text-city-dark">{b.name}</span>
-              <span className="text-city-blue text-xs font-semibold">Abrir →</span>
-            </div>
-          </a>
-        ))}
-      </div>
     </Section>
   )
 }

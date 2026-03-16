@@ -2,16 +2,6 @@ import { motion } from 'framer-motion'
 import Section from '../components/Section'
 import StatCounter from '../components/StatCounter'
 import Icon from '../components/Icon'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Cell, ReferenceLine, Tooltip } from 'recharts'
-
-const HALLUCINATION_DATA = [
-  { model: 'Gemini 2.0 Flash', rate: 0.7, safe: true },
-  { model: 'Claude 3.5 Sonnet', rate: 1.4, safe: true },
-  { model: 'GPT-4o', rate: 3.0, safe: true },
-  { model: 'Llama 3.1 70B', rate: 5.5, safe: false },
-  { model: 'GPT-3.5 Turbo', rate: 15.5, safe: false },
-  { model: 'GPT-4.5', rate: 37.1, safe: false },
-]
 
 const COMPARISONS = [
   {
@@ -47,30 +37,6 @@ export default function HypeVsReality() {
       <div className="mb-12 p-8 rounded-2xl border-2 border-city-red/30 bg-city-red/5 text-center">
         <StatCounter value={67.4} suffix=" bi" prefix="US$ " label="em perdas causadas por alucinações de IA em 2024 (AllAboutAI Report)" />
         <p className="mt-2 text-sm text-gray-400">47% dos usuários corporativos tomaram decisões baseadas em conteúdo alucinado</p>
-      </div>
-
-      {/* Gráfico de alucinações */}
-      <div className="mb-12">
-        <h3 className="text-xl font-bold text-white mb-6">Taxa de Alucinação por Modelo (Vectara Leaderboard, 2025)</h3>
-        <div className="bg-white/5 rounded-2xl p-6">
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={HALLUCINATION_DATA} layout="vertical" margin={{ left: 120, right: 30 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" />
-              <XAxis type="number" domain={[0, 40]} tick={{ fill: '#9ca3af', fontSize: 12 }} unit="%" />
-              <YAxis type="category" dataKey="model" tick={{ fill: '#e5e7eb', fontSize: 13 }} width={110} />
-              <Tooltip
-                contentStyle={{ backgroundColor: '#0D1B2A', border: '1px solid #ffffff20', borderRadius: 8, color: '#fff' }}
-                formatter={(value) => [`${value}%`, 'Taxa de alucinação']}
-              />
-              <ReferenceLine x={5} stroke="#FF6B35" strokeDasharray="5 5" label={{ value: 'Limiar crítico', fill: '#FF6B35', fontSize: 11 }} />
-              <Bar dataKey="rate" radius={[0, 6, 6, 0]}>
-                {HALLUCINATION_DATA.map((entry, i) => (
-                  <Cell key={i} fill={entry.safe ? '#2DC653' : '#C62828'} />
-                ))}
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
       </div>
 
       {/* LinkedIn vs Realidade */}

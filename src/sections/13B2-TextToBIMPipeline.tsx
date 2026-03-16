@@ -3,12 +3,10 @@ import Section from '../components/Section'
 import Icon from '../components/Icon'
 
 const FLOW_STEPS = [
-  { step: 1, label: 'Prompt em linguagem natural', icon: 'message-square', color: '#6B48FF', detail: '"Crie um edifício residencial de 8 andares com 4 apartamentos por andar"' },
-  { step: 2, label: 'LLM interpreta e gera código', icon: 'cpu', color: '#0047AB', detail: 'GPT-5, Claude Opus ou Gemini traduz texto em chamadas de API BIM' },
-  { step: 3, label: 'API BIM cria geometria', icon: 'layers', color: '#00B4D8', detail: 'Paredes, lajes, aberturas com semântica IFC completa' },
-  { step: 4, label: 'Model checker valida', icon: 'check-square', color: '#2DC653', detail: 'Verificação de consistência, colisões e normas' },
-  { step: 5, label: 'Agentes corrigem iterativamente', icon: 'settings', color: '#FF6B35', detail: 'Multi-agente resolve problemas sem intervenção humana' },
-  { step: 6, label: 'Modelo IFC exportado', icon: 'file-text', color: '#6B48FF', detail: 'Pronto para Revit, ArchiCAD ou qualquer viewer BIM' },
+  { step: 1, label: 'Prompt → LLM gera código BIM', icon: 'message-square', color: '#6B48FF', detail: 'Texto natural traduzido em chamadas de API BIM via GPT-5, Claude ou Gemini' },
+  { step: 2, label: 'Geometria + semântica IFC', icon: 'layers', color: '#0047AB', detail: 'Paredes, lajes e aberturas criadas com classificação IFC completa' },
+  { step: 3, label: 'Validação + correção por agentes', icon: 'check-square', color: '#2DC653', detail: 'Model checker valida, agentes corrigem iterativamente' },
+  { step: 4, label: 'Modelo IFC editável exportado', icon: 'file-text', color: '#FF6B35', detail: 'Pronto para Revit, ArchiCAD ou qualquer viewer BIM' },
 ]
 
 const research = [
