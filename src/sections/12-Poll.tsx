@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Section from '../components/Section'
 import Icon from '../components/Icon'
+import QRAccess from '../components/QRAccess'
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell, Tooltip } from 'recharts'
 
 const OPTIONS = [
@@ -48,23 +49,28 @@ export default function Poll() {
   return (
     <Section id="poll" title="Enquete" subtitle="Você já usou IA no seu trabalho de engenharia?" dark>
       {!voted ? (
-        <div className="max-w-2xl mx-auto space-y-3">
-          {OPTIONS.map((opt, i) => (
-            <motion.button
-              key={opt.key}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              onClick={() => vote(opt.key)}
-              className="w-full flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all text-left group"
-            >
-              <span className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shrink-0" style={{ backgroundColor: opt.color }}>
-                {opt.key}
-              </span>
-              <p className="text-white group-hover:text-city-cyan transition-colors">{opt.text}</p>
-            </motion.button>
-          ))}
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
+          <div className="flex-1 space-y-3 w-full">
+            {OPTIONS.map((opt, i) => (
+              <motion.button
+                key={opt.key}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                onClick={() => vote(opt.key)}
+                className="w-full flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all text-left group"
+              >
+                <span className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shrink-0" style={{ backgroundColor: opt.color }}>
+                  {opt.key}
+                </span>
+                <p className="text-white group-hover:text-city-cyan transition-colors">{opt.text}</p>
+              </motion.button>
+            ))}
+          </div>
+          <div className="hidden lg:block w-64 shrink-0">
+            <QRAccess sectionId="poll" label="Escaneie e vote pelo celular!" />
+          </div>
         </div>
       ) : (
         <div className="max-w-3xl mx-auto">

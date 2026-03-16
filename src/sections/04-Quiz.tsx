@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Section from '../components/Section'
 import Icon from '../components/Icon'
+import QRAccess from '../components/QRAccess'
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell, Tooltip } from 'recharts'
 
 const OPTIONS = [
@@ -50,26 +51,31 @@ export default function Quiz() {
   return (
     <Section id="quiz" title="Quiz Interativo" subtitle="Qual dessas tarefas a IA faz MELHOR que humanos hoje?">
       {!voted ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          {OPTIONS.map((opt, i) => (
-            <motion.button
-              key={opt.key}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              onClick={() => vote(opt.key)}
-              className="p-5 rounded-xl border-2 text-left hover:shadow-lg transition-all group"
-              style={{ borderColor: `${opt.color}30` }}
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <span className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm" style={{ backgroundColor: opt.color }}>
-                  {opt.key}
-                </span>
-                <p className="text-sm font-medium text-city-navy group-hover:text-city-blue transition-colors">{opt.text}</p>
-              </div>
-            </motion.button>
-          ))}
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
+            {OPTIONS.map((opt, i) => (
+              <motion.button
+                key={opt.key}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                onClick={() => vote(opt.key)}
+                className="p-5 rounded-xl border-2 text-left hover:shadow-lg transition-all group"
+                style={{ borderColor: `${opt.color}30` }}
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm" style={{ backgroundColor: opt.color }}>
+                    {opt.key}
+                  </span>
+                  <p className="text-sm font-medium text-city-navy group-hover:text-city-blue transition-colors">{opt.text}</p>
+                </div>
+              </motion.button>
+            ))}
+          </div>
+          <div className="hidden lg:block w-64 shrink-0">
+            <QRAccess sectionId="quiz" label="Escaneie e vote pelo celular!" dark={false} />
+          </div>
         </div>
       ) : (
         <div className="max-w-3xl mx-auto">
