@@ -1,6 +1,6 @@
 import Section from '../components/Section'
 import CaseCard from '../components/CaseCard'
-import SourceCard from '../components/SourceCard'
+
 
 const CASES = [
   {
@@ -53,22 +53,12 @@ const CASES = [
   },
 ]
 
-const SOURCES = [
-  { title: 'DeepMind — Cooling', url: 'https://deepmind.google/blog/deepmind-ai-reduces-google-data-centre-cooling-bill-by-40/', type: 'paper' as const, description: 'IA reduz custo de resfriamento em 40%' },
-  { title: 'ALICE — Suffolk Case', url: 'https://blog.alicetechnologies.com/case-studies/how-alice-helped-suffolk-construction-to-optimize-key-milestones-on-a-life-sciences-project', type: 'platform' as const, description: '42 dias economizados com IA' },
-  { title: 'Autodesk Forma', url: 'https://blogs.autodesk.com/forma/2025/09/16/introducing-forma-building-design/', type: 'platform' as const, description: 'Design generativo com IA' },
-]
 
 export default function CasesEnergy() {
   return (
     <Section id="cases-energy" title="Cases: Energia, Cronogramas e Design" subtitle="Da otimização de data centers ao planejamento de obras">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {CASES.map(c => <CaseCard key={c.city} {...c} />)}
-      </div>
-
-      <h3 className="text-lg font-bold text-city-navy mb-4">Fontes</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {SOURCES.map(s => <SourceCard key={s.url} {...s} />)}
       </div>
     </Section>
   )

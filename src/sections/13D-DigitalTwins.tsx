@@ -54,14 +54,6 @@ const platforms = [
   },
 ]
 
-const comparison = [
-  { aspect: 'Dados', traditional: 'Estáticos (modelos 3D)', ai: 'Tempo real (IoT + sensores)' },
-  { aspect: 'Análise', traditional: 'Manual, periódica', ai: 'Contínua, preditiva' },
-  { aspect: 'Manutenção', traditional: 'Corretiva ou preventiva', ai: 'Preditiva (semanas antes)' },
-  { aspect: 'Otimização', traditional: 'Trial and error', ai: 'Automática por ML/RL' },
-  { aspect: 'Escala', traditional: 'Edifício individual', ai: 'Fábrica → cidade → país' },
-]
-
 const marketStats = [
   { value: 'US$ 4 bi', label: 'Mercado global 2024' },
   { value: 'US$ 35+ bi', label: 'Projeção 2028' },
@@ -119,28 +111,6 @@ export default function DigitalTwins() {
         ))}
       </div>
 
-      {/* Comparison table */}
-      <h3 className="text-xl font-bold text-city-navy mb-4">Digital Twin Tradicional vs com IA</h3>
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm border-collapse">
-          <thead>
-            <tr className="bg-city-navy text-white">
-              <th className="p-3 text-left rounded-tl-xl">Aspecto</th>
-              <th className="p-3 text-left">Tradicional</th>
-              <th className="p-3 text-left rounded-tr-xl">Com IA</th>
-            </tr>
-          </thead>
-          <tbody>
-            {comparison.map((row, i) => (
-              <tr key={i} className={i % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                <td className="p-3 font-semibold text-city-navy">{row.aspect}</td>
-                <td className="p-3 text-gray-600">{row.traditional}</td>
-                <td className="p-3 text-city-blue font-medium">{row.ai}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
     </Section>
   )
 }

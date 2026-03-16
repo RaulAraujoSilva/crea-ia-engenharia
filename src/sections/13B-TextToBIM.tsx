@@ -26,30 +26,6 @@ const tools = [
     metric: '3.000 planos em <10s',
     color: '#00B4D8',
   },
-  {
-    name: 'Finch 3D',
-    desc: 'Gera plantas otimizadas por adjacência, circulação e iluminação natural. Integração bidirecional com Rhino, Grasshopper e Revit.',
-    url: 'https://www.finch3d.com',
-    img: './img/frontier/bim-finch3d.jpg',
-    metric: 'Otimização paramétrica',
-    color: '#2DC653',
-  },
-  {
-    name: 'Swapp AI',
-    desc: 'Do design esquemático à documentação de construção completa. Conformidade automática com códigos. Redução de 70% no tempo.',
-    url: 'https://swapp.ai',
-    img: './img/frontier/bim-swapp.jpg',
-    metric: '70% redução documentação',
-    color: '#FF6B35',
-  },
-  {
-    name: 'Architechtures',
-    desc: 'IA generativa para projetos residenciais. Gera modelo BIM em tempo real a partir de parâmetros do terreno e programa de necessidades.',
-    url: 'https://architechtures.com',
-    img: './img/frontier/bim-architechtures.jpg',
-    metric: 'BIM residencial em tempo real',
-    color: '#E86D00',
-  },
 ]
 
 export default function TextToBIM() {

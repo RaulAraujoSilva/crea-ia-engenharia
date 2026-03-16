@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import Section from '../components/Section'
 import CaseCard from '../components/CaseCard'
-import SourceCard from '../components/SourceCard'
+
 import Icon from '../components/Icon'
 
 const CASES = [
@@ -74,14 +74,8 @@ export default function CasesInspection() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {CASES.map(c => <CaseCard key={c.city} {...c} />)}
-      </div>
-
-      <h3 className="text-lg font-bold text-city-navy mb-4">Fontes</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <SourceCard title="Inspekt AI — Dashboard" url="https://inspektai.com/defect-analysis-dashboard/" type="platform" description="Dashboard de análise de defeitos com IA" />
-        <SourceCard title="IEEE Spectrum — Doxel" url="https://spectrum.ieee.org/doxel-ai-startup-using-lidar-equipped-robots-on-construction-sites" type="news" description="Robôs com IA em canteiros de obra" />
       </div>
     </Section>
   )

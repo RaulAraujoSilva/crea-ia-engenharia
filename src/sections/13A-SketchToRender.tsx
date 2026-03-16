@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import Section from '../components/Section'
-import Icon from '../components/Icon'
 
 const tools = [
   {
@@ -44,7 +43,7 @@ export default function SketchToRender() {
   return (
     <Section id="sketch-to-render" title="Sketch-to-Render com IA" subtitle="De esboço a visualização fotorrealística em segundos">
       {/* Stats row */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
         {stats.map((s, i) => (
           <motion.div
             key={i}
@@ -58,23 +57,6 @@ export default function SketchToRender() {
             <p className="text-xs text-gray-500 mt-1">{s.label}</p>
           </motion.div>
         ))}
-      </div>
-
-      {/* Concept */}
-      <div className="bg-gradient-to-r from-city-navy/5 to-city-blue/5 rounded-2xl p-6 mb-12 border border-city-navy/10">
-        <div className="flex items-start gap-4">
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: '#0047AB15' }}>
-            <Icon name="eye" size={24} className="text-city-blue" />
-          </div>
-          <div>
-            <h3 className="text-lg font-bold text-city-navy mb-2">Como funciona?</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Modelos de difusão (Stable Diffusion, SDXL) treinados com datasets arquitetônicos transformam
-              esboços de 30 segundos em visualizações que antes levariam horas no V-Ray ou Lumion.
-              O arquiteto mantém o controle criativo — a IA cuida da renderização.
-            </p>
-          </div>
-        </div>
       </div>
 
       {/* Tools grid */}
@@ -91,7 +73,7 @@ export default function SketchToRender() {
             transition={{ delay: i * 0.1 }}
             className="group block rounded-2xl overflow-hidden border border-gray-200 hover:border-city-blue hover:shadow-xl transition-all"
           >
-            <div className="h-48 overflow-hidden bg-gray-100">
+            <div className="h-36 overflow-hidden bg-gray-100">
               <img
                 src={tool.img}
                 alt={tool.name}

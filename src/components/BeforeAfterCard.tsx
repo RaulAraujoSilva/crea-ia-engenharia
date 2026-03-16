@@ -26,7 +26,7 @@ export default function BeforeAfterCard({
   title, subtitle, icon, color, aiTool, timeEstimate,
   beforeImage, beforeLabel, afterImage, afterLabel,
   afterImage2, afterLabel2,
-  description, promptUsed, discussionPoint,
+  description,
 }: BeforeAfterCardProps) {
   const { ref, inView } = useInView({ threshold: 0.15, triggerOnce: true })
   const [lightbox, setLightbox] = useState<string | null>(null)
@@ -81,26 +81,26 @@ export default function BeforeAfterCard({
             <img
               src={beforeImage}
               alt={beforeLabel}
-              className="w-full h-48 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-36 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
               loading="lazy"
             />
-            <p className="text-xs text-gray-500 mt-2 text-center">{beforeLabel}</p>
+            <p className="text-xs text-gray-500 mt-1 text-center">{beforeLabel}</p>
           </button>
 
           <button
             onClick={() => setLightbox(afterImage)}
             className="relative group bg-white p-3"
           >
-            <p className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color }}>
+            <p className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color }}>
               Depois
             </p>
             <img
               src={afterImage}
               alt={afterLabel}
-              className="w-full h-48 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-36 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
               loading="lazy"
             />
-            <p className="text-xs text-gray-500 mt-2 text-center">{afterLabel}</p>
+            <p className="text-xs text-gray-500 mt-1 text-center">{afterLabel}</p>
           </button>
 
           {hasComparison && (
@@ -108,13 +108,13 @@ export default function BeforeAfterCard({
               onClick={() => setLightbox(afterImage2!)}
               className="relative group bg-white p-3"
             >
-              <p className="text-xs font-bold text-city-orange uppercase tracking-wider mb-2">
+              <p className="text-xs font-bold text-city-orange uppercase tracking-wider mb-1">
                 Alternativa
               </p>
               <img
                 src={afterImage2}
                 alt={afterLabel2}
-                className="w-full h-48 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-36 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                 loading="lazy"
               />
               <p className="text-xs text-gray-500 mt-2 text-center">{afterLabel2}</p>
@@ -123,30 +123,8 @@ export default function BeforeAfterCard({
         </div>
 
         {/* Description */}
-        <div className="px-6 py-4">
-          <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
-        </div>
-
-        {/* Prompt used */}
-        <div className="px-6 pb-3">
-          <div className="rounded-lg p-3" style={{ backgroundColor: `${color}08` }}>
-            <p className="text-xs font-semibold mb-1" style={{ color }}>
-              <Icon name="terminal" size={12} className="inline mr-1" style={{ color }} />
-              Prompt utilizado:
-            </p>
-            <p className="text-xs text-gray-600 italic leading-relaxed">{promptUsed}</p>
-          </div>
-        </div>
-
-        {/* Discussion point */}
-        <div className="px-6 pb-5">
-          <div className="bg-city-orange/5 rounded-lg p-3">
-            <p className="text-xs font-semibold text-city-orange mb-1">
-              <Icon name="message-circle" size={12} className="inline mr-1" />
-              Ponto de reflexao:
-            </p>
-            <p className="text-xs text-gray-600 leading-relaxed">{discussionPoint}</p>
-          </div>
+        <div className="px-5 py-3">
+          <p className="text-xs text-gray-600 leading-relaxed">{description}</p>
         </div>
       </motion.div>
 

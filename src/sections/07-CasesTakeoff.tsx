@@ -1,6 +1,6 @@
 import Section from '../components/Section'
 import CaseCard from '../components/CaseCard'
-import SourceCard from '../components/SourceCard'
+
 
 const CASES = [
   {
@@ -52,21 +52,12 @@ const CASES = [
   },
 ]
 
-const SOURCES = [
-  { title: 'Beam AI — Plataforma', url: 'https://www.ibeam.ai/', type: 'platform' as const, description: 'IA para estimativa de quantitativos estruturais' },
-  { title: 'Togal.AI — Estudo Univ. Kansas', url: 'https://www.togal.ai/case-study/ku-study-togal-vs-ost', type: 'paper' as const, description: '76% mais rápido que On-Screen Takeoff' },
-]
 
 export default function CasesTakeoff() {
   return (
     <Section id="cases-takeoff" title="Cases: Orçamentos e Takeoff" subtitle="IA que mede, quantifica e estima com precisão comprovada">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {CASES.map(c => <CaseCard key={c.city} {...c} />)}
-      </div>
-
-      <h3 className="text-lg font-bold text-city-navy mb-4">Fontes</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {SOURCES.map(s => <SourceCard key={s.url} {...s} />)}
       </div>
     </Section>
   )

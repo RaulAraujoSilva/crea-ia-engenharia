@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import Section from '../components/Section'
-import Icon from '../components/Icon'
 
 const tools = [
   {
@@ -45,24 +44,8 @@ const comparison = [
 export default function ImageTo3D() {
   return (
     <Section id="image-to-3d" title="Imagem e Texto para 3D" subtitle="De uma foto ou descrição para um modelo tridimensional">
-      {/* Key insight */}
-      <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-6 mb-12 border border-purple-100">
-        <div className="flex items-start gap-4">
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-purple-100">
-            <Icon name="globe" size={24} className="text-purple-600" />
-          </div>
-          <div>
-            <h3 className="text-lg font-bold text-city-navy mb-2">Duas abordagens distintas</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Existem dois caminhos: <strong>mesh/NeRF</strong> (rápido, visual, não editável) e <strong>CAD/BREP</strong> (paramétrico, editável, para engenharia).
-              O MIT demonstrou em 2025 um agente que aprende a usar software CAD para criar objetos 3D a partir de esboços — um avanço significativo.
-            </p>
-          </div>
-        </div>
-      </div>
-
       {/* Tools grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
         {tools.map((tool, i) => (
           <motion.a
             key={tool.name}
@@ -75,7 +58,7 @@ export default function ImageTo3D() {
             transition={{ delay: i * 0.1 }}
             className="group block rounded-2xl overflow-hidden border border-gray-200 hover:border-city-blue hover:shadow-xl transition-all"
           >
-            <div className="h-48 overflow-hidden bg-gray-100">
+            <div className="h-32 overflow-hidden bg-gray-100">
               <img
                 src={tool.img}
                 alt={tool.name}

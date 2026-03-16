@@ -1,6 +1,6 @@
 import Section from '../components/Section'
 import CaseCard from '../components/CaseCard'
-import SourceCard from '../components/SourceCard'
+
 
 const CASES = [
   {
@@ -53,22 +53,12 @@ const CASES = [
   },
 ]
 
-const SOURCES = [
-  { title: 'UpCodes — AI Features', url: 'https://up.codes/features/ai', type: 'platform' as const, description: 'Página oficial das features de IA do UpCodes' },
-  { title: 'CodeComply.AI — Plataforma', url: 'https://codecomply.ai/', type: 'platform' as const, description: 'Análise automática de conformidade com códigos' },
-  { title: 'Blitz AI — Case Naples', url: 'https://blitzpermits.ai/news/naples-florida-building-plan-review', type: 'news' as const, description: 'Aprovação de alvarás com IA em Naples, Florida' },
-]
 
 export default function CasesCompliance() {
   return (
     <Section id="cases-compliance" title="Cases: Conformidade e Normas" subtitle="Ferramentas que já verificam códigos de construção com IA">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {CASES.map(c => <CaseCard key={c.city} {...c} />)}
-      </div>
-
-      <h3 className="text-lg font-bold text-city-navy mb-4">Fontes</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {SOURCES.map(s => <SourceCard key={s.url} {...s} />)}
       </div>
     </Section>
   )
