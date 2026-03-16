@@ -4,6 +4,9 @@ import Icon from './Icon'
 const sections = [
   { id: 'hero', label: 'Início', icon: 'home' },
   { id: 'speaker', label: 'Palestrante', icon: 'user' },
+  { id: 'evolution', label: 'Evolução', icon: 'trending-up' },
+  { id: 'timeline-llms', label: 'Timeline LLMs', icon: 'clock' },
+  { id: 'chat-vs-agents', label: 'Chat→Agentes', icon: 'bot' },
   { id: 'hype-vs-reality', label: 'O Hype', icon: 'alert-triangle' },
   { id: 'quiz', label: 'Quiz', icon: 'bar-chart' },
   { id: 'where-ai-works', label: 'Onde Funciona', icon: 'check-circle' },

@@ -1,6 +1,9 @@
 import Navbar from './components/Navbar'
 import Hero from './sections/01-Hero'
 import Speaker from './sections/02-Speaker'
+import Evolution from './sections/02b-Evolution'
+import TimelineLLMs from './sections/02d-TimelineLLMs'
+import ChatVsAgents from './sections/02c-ChatVsAgents'
 import HypeVsReality from './sections/03-HypeVsReality'
 import Quiz from './sections/04-Quiz'
 import WhereAIWorks from './sections/05-WhereAIWorks'
@@ -29,6 +32,11 @@ function App() {
         {/* Abertura */}
         <Hero />
         <Speaker />
+
+        {/* A IA Hoje */}
+        <Evolution />
+        <TimelineLLMs />
+        <ChatVsAgents />
 
         {/* O Hype vs A Realidade */}
         <HypeVsReality />
