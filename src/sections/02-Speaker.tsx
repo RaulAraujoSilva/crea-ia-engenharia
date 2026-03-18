@@ -3,17 +3,17 @@ import Section from '../components/Section'
 import Icon from '../components/Icon'
 
 const FORMATION = [
-  { icon: 'cpu', title: 'Doutorando COPPE/UFRJ', detail: 'Engenharia de Sistemas e Computação' },
-  { icon: 'file-text', title: 'Mestre COPPE/UFRJ', detail: 'Engenharia de Sistemas e Computação' },
-  { icon: 'shield', title: 'MBA FGV', detail: 'Gerenciamento de Projetos' },
-  { icon: 'book-open', title: 'Bacharel em Direito', detail: 'UERJ' },
+  { icon: 'file-text', title: 'Mestre — COPPE/UFRJ', detail: 'Engenharia de Sistemas e Computação' },
+  { icon: 'shield', title: 'MBA — FGV', detail: 'Gerenciamento de Projetos' },
+  { icon: 'book-open', title: 'Bacharel em Direito — UERJ', detail: 'Formação jurídica' },
+  { icon: 'cpu', title: 'TCE-RJ / AGENERSA', detail: 'Servidor de carreira há 25+ anos' },
 ]
 
 const ACHIEVEMENTS = [
-  'Pesquisa em LLMs aplicados à engenharia civil e estrutural',
-  'Automação de verificação de conformidade com normas NBR/ABNT',
-  'Análise de risco em projetos com modelos de machine learning',
-  'Integração de IA com BIM (Building Information Modeling)',
+  'Implantação de processo eletrônico no Estado do RJ',
+  'Auditoria contínua baseada em dados',
+  'Gestão do conhecimento e metodologias BIM',
+  'Modernização institucional e governança orientada a dados',
 ]
 
 export default function Speaker() {
@@ -30,30 +30,41 @@ export default function Speaker() {
           >
             <img
               src="./img/raul-foto.jpg"
-              alt="Raul Araújo"
+              alt="Raul Araújo da Silva"
               className="w-48 h-48 rounded-full object-cover border-4 border-white shadow-xl ring-4 ring-city-blue/20"
             />
           </motion.div>
-          <h3 className="mt-4 text-2xl font-bold text-city-navy">Raul Araújo</h3>
-          <p className="text-city-blue font-medium">Pesquisador COPPE/UFRJ</p>
+          <h3 className="mt-4 text-2xl font-bold text-city-navy">Raul Araújo da Silva</h3>
+          <p className="text-city-blue font-medium">Professor · TCE-RJ / AGENERSA</p>
 
           <div className="mt-4 space-y-2 text-center">
-            <a href="mailto:raularaujo@crie.coppe.ufrj.br" className="block text-sm text-city-blue hover:text-city-cyan transition-colors">
-              raularaujo@crie.coppe.ufrj.br
+            <a href="mailto:raularaujo@crie.ufrj.br" className="block text-sm text-city-blue hover:text-city-cyan transition-colors">
+              raularaujo@crie.ufrj.br
             </a>
             <a href="tel:+5521996666456" className="block text-sm text-city-blue hover:text-city-cyan transition-colors">
               (21) 99666-6456
             </a>
+          </div>
+
+          {/* AI assistant note */}
+          <div className="mt-4 bg-city-cyan/10 border border-city-cyan/20 rounded-xl p-3 text-center max-w-xs">
+            <p className="text-xs text-gray-600">
+              Tem dúvidas durante a palestra? Envie para o assistente virtual em{' '}
+              <a href="mailto:raularaujo@crie.ufrj.br" className="font-bold text-city-blue hover:text-city-cyan transition-colors">
+                raularaujo@crie.ufrj.br
+              </a>
+            </p>
+            <p className="text-[10px] text-gray-400 mt-1">Respostas em tempo real por IA</p>
           </div>
         </div>
 
         {/* Bio columns */}
         <div className="lg:col-span-2 space-y-6">
           <p className="text-gray-600 leading-relaxed">
-            Pesquisador do CRIE (Centro de Referência em Inteligência Empresarial) da COPPE/UFRJ,
-            com atuação em IA aplicada à engenharia, automação de processos e tomada de decisão baseada
-            em dados. Professor convidado com experiência em projetos de transformação digital no setor
-            público e privado.
+            Servidor de carreira do Tribunal de Contas do Estado do Rio de Janeiro há mais de 25 anos,
+            atualmente cedido à AGENERSA. Professor da Escola de Contas e Gestão, IBMEC e Universidade
+            Veiga de Almeida, com atuação em Inteligência Artificial aplicada ao setor público, gestão
+            estratégica e transformação digital.
           </p>
 
           {/* Formation */}
@@ -80,7 +91,7 @@ export default function Speaker() {
 
           {/* Achievements */}
           <div className="bg-city-navy/5 rounded-xl p-5">
-            <h4 className="font-bold text-city-navy mb-3">Áreas de Atuação</h4>
+            <h4 className="font-bold text-city-navy mb-3">Principais Realizações</h4>
             <ul className="space-y-2">
               {ACHIEVEMENTS.map((item, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
