@@ -16,17 +16,19 @@ const VECTARA_DATA = [
   { model: 'Grok 4.1 Fast', rate: 20.2, safe: false },
 ]
 
-/* AA-Omniscience — benchmark de conhecimento factual (6.000 perguntas)
-   Mede respostas falsas entre tentativas incorretas */
+/* AA-Omniscience — benchmark de conhecimento factual (6.000 perguntas, 42 tópicos)
+   Taxa de alucinação = respostas incorretas / (incorretas + parciais + não tentadas)
+   Fonte: artificialanalysis.ai/evaluations/omniscience */
 const OMNISCIENCE_DATA = [
-  { model: 'Claude 4.5 Haiku', rate: 26, safe: true },
+  { model: 'Grok 4.20', rate: 22, safe: true },
+  { model: 'Claude 4.5 Haiku', rate: 25, safe: true },
+  { model: 'Claude Sonnet 4.6', rate: 38, safe: false },
   { model: 'Claude 4.5 Sonnet', rate: 48, safe: false },
   { model: 'Gemini 3.1 Pro', rate: 50, safe: false },
+  { model: 'GPT-5.1 (high)', rate: 51, safe: false },
   { model: 'Grok 4', rate: 64, safe: false },
-  { model: 'Grok 4.1 Fast', rate: 72, safe: false },
-  { model: 'GPT-5.1', rate: 81, safe: false },
-  { model: 'Llama 4 Maverick', rate: 88, safe: false },
-  { model: 'Gemini 2.5 Pro', rate: 88, safe: false },
+  { model: 'DeepSeek R1', rate: 83, safe: false },
+  { model: 'Gemini 2.5 Pro', rate: 89, safe: false },
 ]
 
 const STUDIES = [

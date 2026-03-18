@@ -26,7 +26,7 @@ const COMPARISONS = [
   },
   {
     hype: '"100% de precisão"',
-    reality: 'Gemini 3.1 Pro: 50% de alucinação. Claude 4.5: 48%. GPT-5.1: 81%',
+    reality: 'Grok 4.20: 22%. Gemini 3.1 Pro: 50%. GPT-5.1: 51%. Gemini 2.5 Pro: 89%',
     hypeIcon: 'trending-up',
     realityIcon: 'alert-triangle',
     source: SOURCE_LINKS.omniscience,
