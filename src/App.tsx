@@ -15,8 +15,8 @@ import CasesCompliance from './sections/06-CasesCompliance'
 import CasesTakeoff from './sections/07-CasesTakeoff'
 import CasesInspection from './sections/08-CasesInspection'
 import CasesEnergy from './sections/09-CasesEnergy'
-import PracticalExamples from './sections/09B-PracticalExamples'
-import PracticalExamples2 from './sections/09C-PracticalExamples2'
+// import PracticalExamples from './sections/09B-PracticalExamples'
+// import PracticalExamples2 from './sections/09C-PracticalExamples2'
 import SketchToRender from './sections/13A-SketchToRender'
 import ImageTo3D from './sections/13A2-ImageTo3D'
 import TextToBIM from './sections/13B-TextToBIM'
@@ -27,7 +27,7 @@ import DigitalTwinsCities from './sections/13D2-DigitalTwinsCities'
 import HypeVsReality from './sections/03-HypeVsReality'
 import HallucinationRates from './sections/11-HallucinationRates'
 import WhereAIFails from './sections/10-WhereAIFails'
-import AgenticFrontier from './sections/13-AgenticFrontier'
+// import AgenticFrontier from './sections/13-AgenticFrontier'
 // import ToolsToTry from './sections/14-ToolsToTry'
 // import LiveDemo from './sections/15-LiveDemo'
 import CREARole from './sections/16-CREARole'
@@ -80,9 +80,9 @@ function App() {
         <DigitalTwins />
         <DigitalTwinsCities />
 
-        {/* 7. Demonstrações ao Vivo */}
-        <PracticalExamples />
-        <PracticalExamples2 />
+        {/* 7. Demonstrações ao Vivo — comentado */}
+        {/* <PracticalExamples /> */}
+        {/* <PracticalExamples2 /> */}
 
         {/* Interação 2 — comentado: sem tempo para dinâmica em palestra presencial */}
         {/* <Poll /> */}
@@ -92,8 +92,8 @@ function App() {
         <HallucinationRates />
         <WhereAIFails />
 
-        {/* Agentes */}
-        <AgenticFrontier />
+        {/* Agentes — comentado */}
+        {/* <AgenticFrontier /> */}
 
         {/* Ferramentas — comentado: sem tempo na palestra */}
         {/* <ToolsToTry /> */}
