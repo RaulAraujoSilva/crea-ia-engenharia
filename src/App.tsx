@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import Hero from './sections/01-Hero'
 import Speaker from './sections/02-Speaker'
+import TechRevolutions from './sections/01b-TechRevolutions'
 import AITimeline from './sections/02a-AITimeline'
 import Evolution from './sections/02b-Evolution'
 import Benchmarks from './sections/02b2-Benchmarks'
@@ -41,6 +42,9 @@ function App() {
         {/* Abertura */}
         <Hero />
         <Speaker />
+
+        {/* Contexto: Revoluções Tecnológicas */}
+        <TechRevolutions />
 
         {/* A IA Hoje */}
         <AITimeline />
