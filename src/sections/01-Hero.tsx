@@ -31,6 +31,16 @@ export default function Hero() {
       {/* Title bar — dark rounded strip across center */}
       <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[200px] rounded-full mx-[-40px]" style={{ backgroundColor: '#073763' }} />
 
+      {/* CREA Aqui logo — map pin, top left */}
+      <motion.img
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        src="/img/crea-template/logo-crea-aqui.png"
+        alt="CREA Aqui"
+        className="absolute top-6 left-6 lg:left-20 h-20 lg:h-28 object-contain z-20 drop-shadow-lg pointer-events-none"
+      />
+
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
         <div className="flex flex-col lg:flex-row items-center gap-10">
