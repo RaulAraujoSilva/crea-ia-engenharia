@@ -27,8 +27,8 @@ const sections = [
   { id: 'hallucination-rates', label: 'Alucinações', icon: 'eye-off' },
   { id: 'where-ai-fails', label: 'Onde Falha', icon: 'shield' },
   { id: 'agentic-frontier', label: 'Agentes', icon: 'bot' },
-  { id: 'tools-to-try', label: 'Ferramentas', icon: 'cpu' },
-  { id: 'live-demo', label: 'Demo', icon: 'play' },
+  // { id: 'tools-to-try', label: 'Ferramentas', icon: 'cpu' },
+  // { id: 'live-demo', label: 'Demo', icon: 'play' },
   { id: 'crea-role', label: 'CREA', icon: 'scale' },
   { id: 'closing', label: 'Encerramento', icon: 'check-circle' },
 ]

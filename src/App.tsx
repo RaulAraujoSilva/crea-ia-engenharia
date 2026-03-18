@@ -24,8 +24,8 @@ import HypeVsReality from './sections/03-HypeVsReality'
 import HallucinationRates from './sections/11-HallucinationRates'
 import WhereAIFails from './sections/10-WhereAIFails'
 import AgenticFrontier from './sections/13-AgenticFrontier'
-import ToolsToTry from './sections/14-ToolsToTry'
-import LiveDemo from './sections/15-LiveDemo'
+// import ToolsToTry from './sections/14-ToolsToTry'
+// import LiveDemo from './sections/15-LiveDemo'
 import CREARole from './sections/16-CREARole'
 import Closing from './sections/17-Closing'
 
@@ -77,9 +77,9 @@ function App() {
         {/* Agentes */}
         <AgenticFrontier />
 
-        {/* Ferramentas */}
-        <ToolsToTry />
-        <LiveDemo />
+        {/* Ferramentas — comentado: sem tempo na palestra */}
+        {/* <ToolsToTry /> */}
+        {/* <LiveDemo /> */}
 
         {/* Regulação e Encerramento */}
         <CREARole />
