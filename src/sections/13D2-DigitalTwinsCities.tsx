@@ -9,6 +9,8 @@ const cities = [
     desc: 'Primeiro digital twin de um país inteiro. Modelo 3D semântico com dados de tráfego, clima, energia e população em tempo real.',
     img: './img/frontier/dt-singapore.jpg',
     color: '#6B48FF',
+    url: 'https://www.3ds.com/insights/customer-stories/virtual-singapore',
+    source: '3ds.com/customer-stories',
     metrics: [
       { value: '45M', label: 'usuários' },
       { value: 'país', label: 'escala nacional' },
@@ -19,9 +21,11 @@ const cities = [
   {
     name: 'Helsinki 3D',
     country: 'Finlândia',
-    desc: 'Meta de carbono zero até 2035. Digital twin aberto ao público. Simula impacto de novas construções.',
+    desc: 'Meta de carbono zero até 2035. Digital twin aberto ao público (CC BY 4.0). Simula impacto de novas construções.',
     img: './img/frontier/dt-helsinki.jpg',
     color: '#00B4D8',
+    url: 'https://www.hel.fi/en/decision-making/information-on-helsinki/maps-and-geospatial-data/helsinki-3d',
+    source: 'hel.fi/helsinki-3d',
     metrics: [
       { value: '2035', label: 'meta carbono zero' },
       { value: 'público', label: 'twin aberto' },
@@ -32,12 +36,14 @@ const cities = [
   {
     name: 'Zurique Digital Twin',
     country: 'Suíça',
-    desc: 'Integra 25 departamentos municipais. Plataforma aberta para pesquisadores. Foco em clima urbano.',
+    desc: 'Integra 25 departamentos municipais. 548 geodatasets abertos. Foco em clima urbano e infraestrutura verde.',
     img: './img/frontier/dt-zurich.jpg',
     color: '#2DC653',
+    url: 'https://www.stadt-zuerich.ch/geodaten/',
+    source: 'stadt-zuerich.ch/geodaten',
     metrics: [
       { value: '25', label: 'departamentos' },
-      { value: 'aberto', label: 'para pesquisadores' },
+      { value: '548', label: 'geodatasets abertos' },
       { value: 'clima', label: 'urbano' },
       { value: 'verde', label: 'infraestrutura' },
     ],
@@ -45,14 +51,16 @@ const cities = [
   {
     name: 'Barcelona Supercomputing',
     country: 'Espanha',
-    desc: 'Usa o supercomputador MareNostrum para simulações urbanas de alta resolução.',
+    desc: 'Usa o supercomputador MareNostrum 5 para simulações urbanas de qualidade do ar e resiliência climática.',
     img: './img/frontier/dt-barcelona.jpg',
     color: '#FF6B35',
+    url: 'https://www.bsc.es/news/bsc-news/bsc-develops-database-advance-towards-digital-twin-air-quality-barcelona',
+    source: 'bsc.es/news',
     metrics: [
-      { value: 'MareNostrum', label: 'supercomputador' },
-      { value: 'alta res', label: 'simulações' },
-      { value: 'privacidade', label: 'debate governança' },
-      { value: 'resiliência', label: 'simulação enchentes' },
+      { value: 'MareNostrum 5', label: 'supercomputador' },
+      { value: '260 PFlops', label: 'GPU acelerado' },
+      { value: 'qualidade ar', label: 'IA + sensores' },
+      { value: 'resiliência', label: 'simulação urbana' },
     ],
   },
 ]
@@ -110,7 +118,7 @@ export default function DigitalTwinsCities() {
               <p className="text-sm text-gray-300 leading-relaxed mb-3">{city.desc}</p>
 
               {/* Metrics grid */}
-              <div className="grid grid-cols-4 gap-2">
+              <div className="grid grid-cols-4 gap-2 mb-3">
                 {city.metrics.map((m, j) => (
                   <div key={j} className="text-center rounded-lg py-1.5 px-1" style={{ backgroundColor: `${city.color}10` }}>
                     <div className="text-sm font-extrabold" style={{ color: city.color }}>{m.value}</div>
@@ -118,6 +126,17 @@ export default function DigitalTwinsCities() {
                   </div>
                 ))}
               </div>
+
+              {/* Source link */}
+              <a
+                href={city.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-city-cyan transition-colors"
+              >
+                <Icon name="external-link" size={10} />
+                {city.source}
+              </a>
             </div>
           </motion.div>
         ))}
