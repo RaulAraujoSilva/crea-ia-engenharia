@@ -5,7 +5,7 @@ import Evolution from './sections/02b-Evolution'
 import Benchmarks from './sections/02b2-Benchmarks'
 import TimelineLLMs from './sections/02d-TimelineLLMs'
 import ChatVsAgents from './sections/02c-ChatVsAgents'
-import Quiz from './sections/04-Quiz'
+// import Quiz from './sections/04-Quiz'
 import WhereAIWorks from './sections/05-WhereAIWorks'
 import CasesCompliance from './sections/06-CasesCompliance'
 import CasesTakeoff from './sections/07-CasesTakeoff'
@@ -19,7 +19,7 @@ import TextToBIM from './sections/13B-TextToBIM'
 import TextToBIMPipeline from './sections/13B2-TextToBIMPipeline'
 import DigitalTwins from './sections/13D-DigitalTwins'
 import DigitalTwinsCities from './sections/13D2-DigitalTwinsCities'
-import Poll from './sections/12-Poll'
+// import Poll from './sections/12-Poll'
 import HypeVsReality from './sections/03-HypeVsReality'
 import HallucinationRates from './sections/11-HallucinationRates'
 import WhereAIFails from './sections/10-WhereAIFails'
@@ -44,8 +44,8 @@ function App() {
         <TimelineLLMs />
         <ChatVsAgents />
 
-        {/* Interação 1 */}
-        <Quiz />
+        {/* Interação 1 — comentado: sem tempo para dinâmica em palestra presencial */}
+        {/* <Quiz /> */}
 
         {/* Onde Funciona */}
         <WhereAIWorks />
@@ -66,8 +66,8 @@ function App() {
         <DigitalTwins />
         <DigitalTwinsCities />
 
-        {/* Interação 2 */}
-        <Poll />
+        {/* Interação 2 — comentado: sem tempo para dinâmica em palestra presencial */}
+        {/* <Poll /> */}
 
         {/* Hype vs Realidade */}
         <HypeVsReality />

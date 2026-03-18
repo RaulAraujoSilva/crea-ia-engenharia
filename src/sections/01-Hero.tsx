@@ -36,10 +36,10 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight"
             >
-              IA na Engenharia
+              O que funciona de verdade
               <br />
               <span className="bg-gradient-to-r from-city-cyan to-city-blue bg-clip-text text-transparent">
-                Do Hype à Realidade
+                IA na prática da Engenharia
               </span>
             </motion.h1>
 

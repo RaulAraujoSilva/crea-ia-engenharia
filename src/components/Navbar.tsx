@@ -8,7 +8,7 @@ const sections = [
   { id: 'benchmarks', label: 'Benchmarks', icon: 'bar-chart' },
   { id: 'timeline-llms', label: 'Timeline LLMs', icon: 'clock' },
   { id: 'chat-vs-agents', label: 'Chat→Agentes', icon: 'bot' },
-  { id: 'quiz', label: 'Quiz', icon: 'bar-chart' },
+  // { id: 'quiz', label: 'Quiz', icon: 'bar-chart' },
   { id: 'where-ai-works', label: 'Onde Funciona', icon: 'check-circle' },
   { id: 'cases-compliance', label: 'Compliance', icon: 'check-square' },
   { id: 'cases-takeoff', label: 'Orçamentos', icon: 'file-text' },
@@ -22,7 +22,7 @@ const sections = [
   { id: 'text-to-bim-pipeline', label: 'BIM Pipeline', icon: 'layers' },
   { id: 'digital-twins', label: 'Digital Twins', icon: 'database' },
   { id: 'digital-twins-cities', label: 'DT Cidades', icon: 'map-pin' },
-  { id: 'poll', label: 'Poll', icon: 'message-circle' },
+  // { id: 'poll', label: 'Poll', icon: 'message-circle' },
   { id: 'hype-vs-reality', label: 'O Hype', icon: 'alert-triangle' },
   { id: 'hallucination-rates', label: 'Alucinações', icon: 'eye-off' },
   { id: 'where-ai-fails', label: 'Onde Falha', icon: 'shield' },
@@ -81,7 +81,7 @@ export default function Navbar() {
       >
         <div className="p-3 border-b border-white/10 flex items-center gap-2 h-[52px]">
           <Icon name="cpu" size={22} className="text-city-cyan shrink-0" />
-          <span className="text-xs font-bold opacity-0 lg:group-hover:opacity-100 transition-opacity whitespace-nowrap text-city-cyan">IA na Engenharia</span>
+          <span className="text-xs font-bold opacity-0 lg:group-hover:opacity-100 transition-opacity whitespace-nowrap text-city-cyan">IA na Prática</span>
         </div>
 
         <div className="overflow-y-auto h-[calc(100%-52px)] py-2">
