@@ -1,200 +1,228 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Section from '../components/Section'
 import Icon from '../components/Icon'
 
+/*  position: 'above' | 'below'
+    offset: extra vertical spacing to stagger cards (0 = close, 1 = mid, 2 = far) */
 const EVENTS = [
   {
     year: '1943',
     label: 'Rede Neural',
     color: '#6B48FF',
-    desc: 'McCulloch & Pitts criaram o conceito matemático (1943). Rosenblatt construiu o Perceptron (1958) — primeira máquina que aprende.',
+    desc: 'McCulloch & Pitts (1943) criaram o conceito. Rosenblatt (1958) construiu o Perceptron.',
     url: 'https://link.springer.com/article/10.1007/BF02478259',
-    src: 'McCulloch & Pitts, 1943',
+    src: 'McCulloch & Pitts',
+    pos: 'above' as const,
+    offset: 1,
   },
   {
     year: '1986',
-    label: 'Backprop',
+    label: 'Backpropagation',
     color: '#6B48FF',
-    desc: 'Hinton provou que redes multicamada podiam corrigir seus erros via retropropagação, viabilizando o Deep Learning.',
+    desc: 'Hinton viabilizou o Deep Learning com retropropagação de erros em redes multicamada.',
     url: 'https://www.nature.com/articles/323533a0',
-    src: 'Hinton et al., Nature 1986',
+    src: 'Nature 1986',
+    pos: 'below' as const,
+    offset: 0,
   },
   {
     year: '1997',
     label: 'Deep Blue',
     color: '#0047AB',
-    desc: 'IBM Deep Blue derrotou Kasparov no xadrez. Triunfo da IA simbólica e força bruta.',
+    desc: 'IBM derrotou Kasparov no xadrez. Triunfo da IA simbólica.',
     url: 'https://www.ibm.com/history/deep-blue',
-    src: 'IBM, 1997',
+    src: 'IBM',
+    pos: 'above' as const,
+    offset: 0,
   },
   {
     year: '2012',
     label: 'AlexNet',
     color: '#2DC653',
-    desc: 'Deep Learning esmagou o ImageNet. Redes profundas em GPUs superaram engenharia de software tradicional.',
+    desc: 'Redes profundas em GPUs esmagaram o ImageNet. Explosão do Deep Learning.',
     url: 'https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks',
-    src: 'Krizhevsky et al., NIPS 2012',
+    src: 'NIPS 2012',
+    pos: 'below' as const,
+    offset: 1,
   },
   {
     year: '2016',
     label: 'AlphaGo',
     color: '#FF6B35',
-    desc: 'DeepMind derrotou Lee Sedol no Go. AlphaZero (2017) aprendeu Go e Xadrez do zero absoluto.',
+    desc: 'IA derrotou campeão de Go. AlphaZero (2017) aprendeu do zero.',
     url: 'https://www.nature.com/articles/nature16961',
-    src: 'Silver et al., Nature 2016',
+    src: 'Nature 2016',
+    pos: 'above' as const,
+    offset: 1,
   },
   {
     year: '2017',
     label: 'Transformer',
     color: '#FF6B35',
-    desc: '"Attention Is All You Need" — arquitetura que processa palavras em paralelo. Base de todos os LLMs.',
+    desc: '"Attention Is All You Need" — base de todos os LLMs modernos.',
     url: 'https://arxiv.org/abs/1706.03762',
-    src: 'Vaswani et al., NIPS 2017',
+    src: 'arXiv 2017',
+    pos: 'below' as const,
+    offset: 0,
   },
   {
     year: '2021',
     label: 'AlphaFold 2',
     color: '#00B4D8',
-    desc: 'DeepMind resolveu desafio biológico de 50 anos: prever estrutura 3D de proteínas.',
+    desc: 'Resolveu desafio de 50 anos: estrutura 3D de proteínas.',
     url: 'https://www.nature.com/articles/s41586-021-03819-2',
-    src: 'Jumper et al., Nature 2021',
+    src: 'Nature 2021',
+    pos: 'above' as const,
+    offset: 0,
   },
   {
     year: '2022',
     label: 'ChatGPT',
     color: '#C62828',
-    desc: 'GPT-3 (2020) mostrou capacidades emergentes. ChatGPT democratizou a IA generativa para o mundo.',
+    desc: 'Democratizou a IA generativa. 100M de usuários em 2 meses.',
     url: 'https://openai.com/index/chatgpt/',
-    src: 'OpenAI, Nov 2022',
+    src: 'OpenAI',
+    pos: 'below' as const,
+    offset: 1,
   },
   {
     year: '2024',
     label: 'GPT-4o',
     color: '#C62828',
-    desc: 'Multimodalidade nativa: texto, áudio e imagem em tempo real, captando tom de voz e emoção.',
+    desc: 'Multimodalidade nativa: texto, áudio e imagem em tempo real.',
     url: 'https://openai.com/index/hello-gpt-4o/',
-    src: 'OpenAI, Mai 2024',
+    src: 'OpenAI',
+    pos: 'above' as const,
+    offset: 1,
   },
   {
     year: '2024',
-    label: 'o1 — "Pensa"',
+    label: 'o1 "Pensa"',
     color: '#C62828',
-    desc: 'Modelos que planejam antes de responder (Chain-of-Thought). Ouro na IOI, superando 93% dos humanos.',
+    desc: 'Chain-of-Thought: planeja antes de responder. Ouro na IOI.',
     url: 'https://openai.com/index/introducing-openai-o1-preview/',
-    src: 'OpenAI, Set 2024',
+    src: 'OpenAI',
+    pos: 'below' as const,
+    offset: 0,
   },
   {
     year: '2025',
-    label: 'Ouro IMO',
+    label: '🥇 IMO',
     color: '#FFD700',
-    desc: 'Gemini com Deep Think alcançou padrão de medalha de ouro na Olimpíada Internacional de Matemática.',
+    desc: 'Gemini Deep Think: ouro na Olimpíada Internacional de Matemática.',
     url: 'https://deepmind.google/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/',
-    src: 'DeepMind, 2025 · arXiv:2507.15855',
+    src: 'DeepMind',
+    pos: 'above' as const,
+    offset: 0,
   },
   {
     year: '2025',
-    label: 'Ouro ICPC',
+    label: '🥇 ICPC',
     color: '#FFD700',
-    desc: 'Gemini alcançou nível de medalha de ouro no ICPC World Finals — competição de elite em programação.',
+    desc: 'Gemini: ouro no ICPC World Finals — elite da programação.',
     url: 'https://deepmind.google/blog/gemini-achieves-gold-medal-level-at-the-international-collegiate-programming-contest-world-finals/',
-    src: 'Google DeepMind, 2025',
+    src: 'DeepMind',
+    pos: 'below' as const,
+    offset: 1,
   },
   {
     year: '2025',
     label: 'Claude Code',
     color: '#00B4D8',
-    desc: 'Anthropic lançou agentes autônomos: Claude 3.7 Sonnet (híbrido rápido/profundo) e Claude Code (CLI que codifica, testa e corrige).',
+    desc: 'Agentes autônomos: Claude 3.7 Sonnet + CLI que codifica e corrige software.',
     url: 'https://www.anthropic.com/news/claude-3-7-sonnet',
-    src: 'Anthropic, Fev 2025',
+    src: 'Anthropic',
+    pos: 'above' as const,
+    offset: 1,
   },
 ]
 
-export default function AITimeline() {
-  const [active, setActive] = useState<number | null>(null)
+/* Height tiers for staggering (px from the timeline axis) */
+const OFFSETS = [4, 24, 44]
 
+export default function AITimeline() {
   return (
     <Section
       id="ai-timeline"
       title="Linha do Tempo da IA"
-      subtitle="Da teoria à autonomia — 80 anos em 15 marcos"
+      subtitle="Da teoria à autonomia — 80 anos em 13 marcos"
       dark
     >
-      {/* Horizontal timeline bar */}
-      <div className="relative mt-2">
-        {/* Main line */}
-        <div className="absolute top-6 left-0 right-0 h-0.5 bg-white/20" />
+      {/* Container: fixed height to fit one viewport */}
+      <div className="relative" style={{ height: 520 }}>
+        {/* Central timeline line */}
+        <div className="absolute left-0 right-0 top-1/2 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
-        {/* Events */}
-        <div className="flex justify-between items-start relative">
-          {EVENTS.map((evt, i) => (
+        {/* Events positioned absolutely */}
+        {EVENTS.map((evt, i) => {
+          const leftPct = (i / (EVENTS.length - 1)) * 94 + 3 // 3%–97% spread
+          const isAbove = evt.pos === 'above'
+          const stemH = 20 + OFFSETS[evt.offset]
+
+          return (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: i * 0.05 }}
-              className="relative flex flex-col items-center group cursor-pointer"
-              style={{ flex: '1 1 0', minWidth: 0 }}
-              onMouseEnter={() => setActive(i)}
-              onMouseLeave={() => setActive(null)}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+              className="absolute"
+              style={{
+                left: `${leftPct}%`,
+                top: '50%',
+                transform: 'translateX(-50%)',
+              }}
             >
-              {/* Node */}
+              {/* Dot on the axis */}
               <div
-                className="w-12 h-12 rounded-full border-2 flex items-center justify-center text-[10px] font-bold text-white z-10 shrink-0 transition-transform group-hover:scale-125"
-                style={{ borderColor: evt.color, backgroundColor: `${evt.color}30` }}
+                className="absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 z-10"
+                style={{
+                  borderColor: evt.color,
+                  backgroundColor: evt.color,
+                  top: -6,
+                }}
+              />
+
+              {/* Vertical stem */}
+              <div
+                className="absolute left-1/2 -translate-x-1/2 w-px"
+                style={{
+                  backgroundColor: `${evt.color}50`,
+                  ...(isAbove
+                    ? { bottom: 6, height: stemH }
+                    : { top: 6, height: stemH }),
+                }}
+              />
+
+              {/* Card */}
+              <a
+                href={evt.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute left-1/2 -translate-x-1/2 w-[7.5rem] rounded-lg border p-2 hover:shadow-lg transition-all group"
+                style={{
+                  borderColor: `${evt.color}40`,
+                  backgroundColor: `${evt.color}0c`,
+                  ...(isAbove
+                    ? { bottom: stemH + 8 }
+                    : { top: stemH + 8 }),
+                }}
               >
-                {evt.year}
-              </div>
-
-              {/* Label below */}
-              <span className="mt-2 text-[9px] md:text-[10px] font-semibold text-center leading-tight text-gray-300 group-hover:text-white transition-colors px-0.5" style={{ maxWidth: '5rem' }}>
-                {evt.label}
-              </span>
-
-              {/* Tooltip card */}
-              <AnimatePresence>
-                {active === i && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute top-20 z-50 w-64 rounded-xl border-2 p-4 shadow-2xl backdrop-blur-sm"
-                    style={{
-                      borderColor: `${evt.color}60`,
-                      backgroundColor: '#0D1B2Af0',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      ...(i <= 1 ? { left: 0, transform: 'none' } : {}),
-                      ...(i >= EVENTS.length - 2 ? { left: 'auto', right: 0, transform: 'none' } : {}),
-                    }}
-                  >
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: evt.color }} />
-                      <span className="text-xs font-bold text-white">{evt.year} — {evt.label}</span>
-                    </div>
-                    <p className="text-xs text-gray-300 leading-relaxed">{evt.desc}</p>
-                    <a
-                      href={evt.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 mt-2 text-[10px] text-gray-400 hover:text-city-cyan transition-colors"
-                    >
-                      <Icon name="external-link" size={9} />
-                      {evt.src}
-                    </a>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                <div className="flex items-center gap-1 mb-1">
+                  <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: evt.color }} />
+                  <span className="text-[10px] font-bold" style={{ color: evt.color }}>{evt.year}</span>
+                </div>
+                <h4 className="text-[11px] font-bold text-white leading-tight">{evt.label}</h4>
+                <p className="text-[9px] text-gray-400 leading-snug mt-1">{evt.desc}</p>
+                <span className="inline-flex items-center gap-0.5 mt-1 text-[8px] text-gray-500 group-hover:text-city-cyan transition-colors">
+                  <Icon name="external-link" size={7} />
+                  {evt.src}
+                </span>
+              </a>
             </motion.div>
-          ))}
-        </div>
+          )
+        })}
       </div>
-
-      <p className="text-xs text-gray-500 mt-16 text-center italic">
-        Passe o mouse sobre cada marco para ver detalhes e fonte
-      </p>
     </Section>
   )
 }
