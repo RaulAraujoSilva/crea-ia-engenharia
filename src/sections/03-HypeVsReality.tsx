@@ -5,7 +5,7 @@ import Icon from '../components/Icon'
 const SOURCE_LINKS = {
   spivack: { label: 'Nova Spivack, "The Hidden Cost Crisis"', url: 'https://www.novaspivack.com/technology/the-hidden-cost-crisis' },
   frontiers: { label: 'Plevris & Hosamo, Frontiers 2025', url: 'https://www.frontiersin.org/journals/built-environment/articles/10.3389/fbuil.2025.1612575/full' },
-  vectara: { label: 'Vectara Leaderboard + OpenAI SimpleQA', url: 'https://huggingface.co/spaces/vectara/leaderboard' },
+  omniscience: { label: 'AA-Omniscience Benchmark, Artificial Analysis', url: 'https://artificialanalysis.ai/evaluations/omniscience?omniscience-hallucination-rate=hallucination-rate' },
   asce: { label: 'ASCE, Civil Engineering Magazine 2025', url: 'https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/issues/magazine-issue/article/2025/03/mishandling-ai-tools-puts-civil-engineers-at-risk-for-ethical-violations' },
 }
 
@@ -26,10 +26,10 @@ const COMPARISONS = [
   },
   {
     hype: '"100% de precisão"',
-    reality: 'Gemini 2.0 Flash: 0,7% de erro. GPT-4.5: 37,1% de erro',
+    reality: 'Gemini 3.1 Pro: 50% de alucinação. Claude 4.5: 48%. GPT-5.1: 81%',
     hypeIcon: 'trending-up',
     realityIcon: 'alert-triangle',
-    source: SOURCE_LINKS.vectara,
+    source: SOURCE_LINKS.omniscience,
   },
   {
     hype: '"Qualquer IA faz cálculo estrutural"',
