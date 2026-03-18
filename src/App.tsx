@@ -55,24 +55,34 @@ function App() {
         {/* Interação 1 — comentado: sem tempo para dinâmica em palestra presencial */}
         {/* <Quiz /> */}
 
-        {/* Onde Funciona */}
+        {/* ── Ciclo de Vida da Engenharia com IA ── */}
         <WhereAIWorks />
-        <CasesCompliance />
-        <CasesTakeoff />
-        <CasesInspection />
-        <CasesEnergy />
 
-        {/* Exemplos Práticos */}
-        <PracticalExamples />
-        <PracticalExamples2 />
-
-        {/* A Fronteira */}
+        {/* 1. Concepção / Design */}
         <SketchToRender />
         <ImageTo3D />
+
+        {/* 2. Projeto / BIM */}
         <TextToBIM />
         <TextToBIMPipeline />
+
+        {/* 3. Aprovação / Conformidade */}
+        <CasesCompliance />
+
+        {/* 4. Orçamento / Quantitativos */}
+        <CasesTakeoff />
+
+        {/* 5. Construção / Monitoramento */}
+        <CasesInspection />
+
+        {/* 6. Operação / Otimização */}
+        <CasesEnergy />
         <DigitalTwins />
         <DigitalTwinsCities />
+
+        {/* 7. Demonstrações ao Vivo */}
+        <PracticalExamples />
+        <PracticalExamples2 />
 
         {/* Interação 2 — comentado: sem tempo para dinâmica em palestra presencial */}
         {/* <Poll /> */}
