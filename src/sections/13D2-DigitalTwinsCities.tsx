@@ -6,34 +6,54 @@ const cities = [
   {
     name: 'Virtual Singapore',
     country: 'Singapura',
-    desc: 'Primeiro digital twin de um país inteiro. Modelo 3D semântico com dados de tráfego, clima, energia e população em tempo real. Referência mundial em planejamento urbano inteligente.',
-    highlights: ['Planejamento urbano', 'Defesa civil', 'Sustentabilidade'],
+    desc: 'Primeiro digital twin de um país inteiro. Modelo 3D semântico com dados de tráfego, clima, energia e população em tempo real.',
     img: './img/frontier/dt-singapore.jpg',
     color: '#6B48FF',
+    metrics: [
+      { value: '45M', label: 'usuários' },
+      { value: 'país', label: 'escala nacional' },
+      { value: 'tempo real', label: 'tráfego/clima/energia' },
+      { value: 'Dassault', label: 'plataforma' },
+    ],
   },
   {
     name: 'Helsinki 3D',
     country: 'Finlândia',
-    desc: 'Meta de carbono zero até 2035. Digital twin aberto ao público para engajamento cidadão. Simula impacto de novas construções em sombra, vento e tráfego.',
-    highlights: ['Carbono zero 2035', 'Dados abertos', 'Engajamento público'],
+    desc: 'Meta de carbono zero até 2035. Digital twin aberto ao público. Simula impacto de novas construções.',
     img: './img/frontier/dt-helsinki.jpg',
     color: '#00B4D8',
+    metrics: [
+      { value: '2035', label: 'meta carbono zero' },
+      { value: 'público', label: 'twin aberto' },
+      { value: 'sombra/vento', label: 'simulação' },
+      { value: 'construção', label: 'impacto previsto' },
+    ],
   },
   {
     name: 'Zurique Digital Twin',
     country: 'Suíça',
-    desc: 'Integra dados de 25 departamentos municipais. Plataforma aberta para pesquisadores e urbanistas. Foco em simulação de clima urbano e planejamento de infraestrutura verde.',
-    highlights: ['25 departamentos', 'Open data', 'Clima urbano'],
+    desc: 'Integra 25 departamentos municipais. Plataforma aberta para pesquisadores. Foco em clima urbano.',
     img: './img/frontier/dt-zurich.jpg',
     color: '#2DC653',
+    metrics: [
+      { value: '25', label: 'departamentos' },
+      { value: 'aberto', label: 'para pesquisadores' },
+      { value: 'clima', label: 'urbano' },
+      { value: 'verde', label: 'infraestrutura' },
+    ],
   },
   {
     name: 'Barcelona Supercomputing',
     country: 'Espanha',
-    desc: 'Usa o supercomputador MareNostrum para simulações urbanas de alta resolução. Debate ativo sobre privacidade de dados e governança do digital twin.',
-    highlights: ['MareNostrum', 'Alta resolução', 'Governança de dados'],
+    desc: 'Usa o supercomputador MareNostrum para simulações urbanas de alta resolução.',
     img: './img/frontier/dt-barcelona.jpg',
     color: '#FF6B35',
+    metrics: [
+      { value: 'MareNostrum', label: 'supercomputador' },
+      { value: 'alta res', label: 'simulações' },
+      { value: 'privacidade', label: 'debate governança' },
+      { value: 'resiliência', label: 'simulação enchentes' },
+    ],
   },
 ]
 
@@ -48,7 +68,7 @@ export default function DigitalTwinsCities() {
   return (
     <Section id="digital-twins-cities" title="Digital Twins: Cidades" subtitle="Do edifício à metrópole — o futuro do planejamento urbano" dark>
       {/* Use cases */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
         {useCases.map((uc, i) => (
           <motion.div
             key={uc.label}
@@ -67,7 +87,7 @@ export default function DigitalTwinsCities() {
         ))}
       </div>
 
-      {/* City cards */}
+      {/* City cards with metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {cities.map((city, i) => (
           <motion.div
@@ -78,7 +98,7 @@ export default function DigitalTwinsCities() {
             transition={{ delay: i * 0.1 }}
             className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-all"
           >
-            <div className="h-44 overflow-hidden">
+            <div className="h-36 overflow-hidden">
               <img src={city.img} alt={city.name} className="w-full h-full object-cover" loading="lazy" />
             </div>
             <div className="p-5">
@@ -88,11 +108,14 @@ export default function DigitalTwinsCities() {
                 <span className="text-[10px] font-bold text-gray-400 bg-white/10 px-2 py-0.5 rounded-full">{city.country}</span>
               </div>
               <p className="text-sm text-gray-300 leading-relaxed mb-3">{city.desc}</p>
-              <div className="flex flex-wrap gap-2">
-                {city.highlights.map(h => (
-                  <span key={h} className="text-[10px] font-semibold px-2 py-1 rounded-full border" style={{ color: city.color, borderColor: `${city.color}40`, backgroundColor: `${city.color}10` }}>
-                    {h}
-                  </span>
+
+              {/* Metrics grid */}
+              <div className="grid grid-cols-4 gap-2">
+                {city.metrics.map((m, j) => (
+                  <div key={j} className="text-center rounded-lg py-1.5 px-1" style={{ backgroundColor: `${city.color}10` }}>
+                    <div className="text-sm font-extrabold" style={{ color: city.color }}>{m.value}</div>
+                    <p className="text-[9px] text-gray-400 mt-0.5">{m.label}</p>
+                  </div>
                 ))}
               </div>
             </div>

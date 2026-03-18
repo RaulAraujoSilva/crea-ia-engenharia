@@ -1,31 +1,55 @@
-import { motion } from 'framer-motion'
 import Section from '../components/Section'
+import CaseCard from '../components/CaseCard'
 import Icon from '../components/Icon'
 
-const tools = [
+const CASES = [
   {
-    name: 'Finch 3D',
-    desc: 'Plantas otimizadas por adjacência, circulação e iluminação natural. Integração Rhino/Grasshopper/Revit.',
-    url: 'https://www.finch3d.com',
-    img: './img/frontier/bim-finch3d.jpg',
-    metric: 'Otimização paramétrica',
+    city: 'Finch 3D',
+    country: 'Otimização paramétrica de plantas',
     color: '#2DC653',
+    highlight: 'Otimização por adjacência',
+    image: './img/frontier/bim-finch3d.jpg',
+    sourceUrl: 'https://www.finch3d.com',
+    sourceLabel: 'finch3d.com',
+    metrics: [
+      { value: 'adjacência', label: 'otimiza layout' },
+      { value: 'Rhino', label: 'integra Grasshopper' },
+      { value: 'iluminação', label: 'natural otimizada' },
+      { value: 'Revit', label: 'exporta' },
+    ],
+    description: 'Plantas otimizadas por adjacência, circulação e iluminação natural. Integração Rhino/Grasshopper/Revit.',
   },
   {
-    name: 'Swapp AI',
-    desc: 'Do design esquemático à documentação completa. Conformidade automática com códigos. 70% redução.',
-    url: 'https://swapp.ai',
-    img: './img/frontier/bim-swapp.jpg',
-    metric: '70% redução documentação',
+    city: 'Swapp AI',
+    country: 'Design → Documentação completa',
     color: '#FF6B35',
+    highlight: '50% redução documentação',
+    image: './img/frontier/bim-swapp.jpg',
+    sourceUrl: 'https://swapp.ai',
+    sourceLabel: 'swapp.ai',
+    metrics: [
+      { value: '50%', label: 'redução documentação' },
+      { value: '8x', label: 'menos trabalho manual' },
+      { value: '22.7M+ ft²', label: 'entregues' },
+      { value: 'automática', label: 'conformidade códigos' },
+    ],
+    description: 'Do design esquemático à documentação completa. Conformidade automática com códigos de construção.',
   },
   {
-    name: 'Architechtures',
-    desc: 'IA generativa residencial. Modelo BIM em tempo real a partir de parâmetros do terreno.',
-    url: 'https://architechtures.com',
-    img: './img/frontier/bim-architechtures.jpg',
-    metric: 'BIM residencial em tempo real',
+    city: 'Architechtures',
+    country: 'IA generativa residencial',
     color: '#E86D00',
+    highlight: 'BIM em tempo real',
+    image: './img/frontier/bim-architechtures.jpg',
+    sourceUrl: 'https://architechtures.com',
+    sourceLabel: 'architechtures.com',
+    metrics: [
+      { value: 'tempo real', label: 'BIM residencial' },
+      { value: 'parâmetros', label: 'terreno como input' },
+      { value: 'IA generativa', label: 'plantas otimizadas' },
+      { value: 'sem CAD', label: 'direto do briefing' },
+    ],
+    description: 'Modelo BIM em tempo real a partir de parâmetros do terreno. IA generativa para projetos residenciais.',
   },
 ]
 
@@ -40,32 +64,8 @@ export default function TextToBIMPipeline() {
   return (
     <Section id="text-to-bim-pipeline" title="Text-to-BIM: Mais Ferramentas" subtitle="Documentação, otimização e o pipeline multi-agente">
       {/* Tools grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        {tools.map((tool, i) => (
-          <motion.a
-            key={tool.name}
-            href={tool.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.08 }}
-            className="group block rounded-xl overflow-hidden border border-gray-200 hover:border-city-blue hover:shadow-lg transition-all"
-          >
-            <div className="h-32 overflow-hidden bg-gray-100">
-              <img src={tool.img} alt={tool.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            </div>
-            <div className="p-3">
-              <div className="flex items-center justify-between mb-1">
-                <h4 className="font-bold text-sm text-city-navy">{tool.name}</h4>
-                <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: tool.color }} />
-              </div>
-              <p className="text-xs text-gray-600 leading-relaxed mb-2">{tool.desc}</p>
-              <p className="text-xs font-bold" style={{ color: tool.color }}>{tool.metric}</p>
-            </div>
-          </motion.a>
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+        {CASES.map(c => <CaseCard key={c.city} {...c} />)}
       </div>
 
       {/* Pipeline flow inline */}

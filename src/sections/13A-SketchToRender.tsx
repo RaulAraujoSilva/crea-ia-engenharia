@@ -1,42 +1,79 @@
 import { motion } from 'framer-motion'
 import Section from '../components/Section'
-
-const tools = [
-  {
-    name: 'Veras (Chaos)',
-    desc: 'Plugin AI para Revit, SketchUp e Rhino — o primeiro a integrar IA diretamente no fluxo BIM. Adquirido pela Chaos em fev/2025.',
-    url: 'https://www.chaos.com/veras',
-    img: './img/frontier/sketch-veras.png',
-    highlight: 'Integração BIM nativa',
-  },
-  {
-    name: 'PromeAI',
-    desc: 'Sketch-to-render especializado em arquitetura. Entende espaços, iluminação e materiais. Plano gratuito generoso.',
-    url: 'https://www.promeai.pro',
-    img: './img/frontier/sketch-promeai.jpg',
-    highlight: 'Gratuito para começar',
-  },
-  {
-    name: 'Rendair AI',
-    desc: 'Transforma esboços manuais em renders fotorrealísticos em segundos. Foco total em arquitetura.',
-    url: 'https://rendair.ai',
-    img: './img/frontier/sketch-rendair.jpg',
-    highlight: 'Esboço → Render em segundos',
-  },
-  {
-    name: 'mnml.ai',
-    desc: 'Converte modelos SketchUp, Revit ou Blender em CGI fotorrealista sem necessidade de motor de render.',
-    url: 'https://mnml.ai',
-    img: './img/frontier/sketch-mnml.jpg',
-    highlight: 'Sem motor de render',
-  },
-]
+import CaseCard from '../components/CaseCard'
 
 const stats = [
   { value: 'US$ 1,5 bi', label: 'Mercado IA generativa em arquitetura (2025)' },
   { value: 'US$ 5,9 bi', label: 'Projeção 2029 — CAGR 41%' },
   { value: '< 30s', label: 'Tempo médio sketch → render' },
   { value: '80-90%', label: 'Redução de trabalho manual (Autodesk)' },
+]
+
+const CASES = [
+  {
+    city: 'Veras (Chaos)',
+    country: 'Plugin AI para Revit, SketchUp e Rhino',
+    color: '#0047AB',
+    highlight: 'Integração BIM nativa',
+    image: './img/frontier/sketch-veras.png',
+    sourceUrl: 'https://www.chaos.com/veras',
+    sourceLabel: 'chaos.com/veras',
+    metrics: [
+      { value: 'Revit/SketchUp', label: 'plugins nativos' },
+      { value: '< 30s', label: 'tempo por render' },
+      { value: 'Chaos', label: 'adquirido fev/2025' },
+      { value: 'BIM', label: 'integração nativa' },
+    ],
+    description: 'Primeiro plugin a integrar IA diretamente no fluxo BIM. Adquirido pela Chaos em fevereiro de 2025.',
+  },
+  {
+    city: 'PromeAI',
+    country: 'Sketch-to-render especializado em arquitetura',
+    color: '#2DC653',
+    highlight: 'Gratuito para começar',
+    image: './img/frontier/sketch-promeai.jpg',
+    sourceUrl: 'https://www.promeai.pro',
+    sourceLabel: 'promeai.pro',
+    metrics: [
+      { value: 'Gratuito', label: 'plano free' },
+      { value: '20+', label: 'estilos arquitetônicos' },
+      { value: 'iluminação', label: 'entende contexto' },
+      { value: '< 10s', label: 'render instantâneo' },
+    ],
+    description: 'Entende espaços, iluminação e materiais. Plano gratuito generoso para experimentar.',
+  },
+  {
+    city: 'Rendair AI',
+    country: 'Esboço → Render fotorrealístico',
+    color: '#FF6B35',
+    highlight: 'Esboço → Render em segundos',
+    image: './img/frontier/sketch-rendair.jpg',
+    sourceUrl: 'https://rendair.ai',
+    sourceLabel: 'rendair.ai',
+    metrics: [
+      { value: 'segundos', label: 'sketch → render' },
+      { value: 'HD', label: 'resolução fotorrealista' },
+      { value: 'fachadas', label: 'especialização arq.' },
+      { value: 'batch', label: 'múltiplos renders' },
+    ],
+    description: 'Transforma esboços manuais em renders fotorrealísticos em segundos. Foco total em arquitetura.',
+  },
+  {
+    city: 'mnml.ai',
+    country: 'CGI sem motor de render',
+    color: '#6B48FF',
+    highlight: 'Sem motor de render',
+    image: './img/frontier/sketch-mnml.jpg',
+    sourceUrl: 'https://mnml.ai',
+    sourceLabel: 'mnml.ai',
+    metrics: [
+      { value: 'sem motor', label: 'render sem engine' },
+      { value: 'SketchUp', label: 'importa direto' },
+      { value: 'CGI', label: 'qualidade cinema' },
+      { value: 'Revit/Blender', label: 'compatível' },
+    ],
+    description: 'Converte modelos SketchUp, Revit ou Blender em CGI fotorrealista sem necessidade de motor de render.',
+  },
 ]
 
 export default function SketchToRender() {
@@ -60,39 +97,8 @@ export default function SketchToRender() {
       </div>
 
       {/* Tools grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {tools.map((tool, i) => (
-          <motion.a
-            key={tool.name}
-            href={tool.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="group block rounded-2xl overflow-hidden border border-gray-200 hover:border-city-blue hover:shadow-xl transition-all"
-          >
-            <div className="h-28 overflow-hidden bg-gray-100">
-              <img
-                src={tool.img}
-                alt={tool.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-            </div>
-            <div className="p-5">
-              <div className="flex items-center justify-between mb-2">
-                <h4 className="font-bold text-city-navy">{tool.name}</h4>
-                <span className="text-[10px] font-bold text-city-blue bg-city-blue/10 px-2 py-1 rounded-full">{tool.highlight}</span>
-              </div>
-              <p className="text-sm text-gray-600 leading-relaxed">{tool.desc}</p>
-              <span className="inline-flex items-center mt-3 text-xs text-city-blue font-semibold group-hover:text-city-orange transition-colors">
-                Visitar site <span className="ml-1">→</span>
-              </span>
-            </div>
-          </motion.a>
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {CASES.map(c => <CaseCard key={c.city} {...c} />)}
       </div>
     </Section>
   )
