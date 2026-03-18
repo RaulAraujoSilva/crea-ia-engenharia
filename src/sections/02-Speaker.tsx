@@ -12,8 +12,8 @@ const FORMATION = [
 const ACHIEVEMENTS = [
   'Implantação de processo eletrônico no Estado do RJ',
   'Auditoria contínua baseada em dados',
-  'Gestão do conhecimento e metodologias BIM',
-  'Modernização institucional e governança orientada a dados',
+  'Implantação da metodologia BIM no Estado do Rio de Janeiro (IEEA)',
+  'Modernização institucional e governança',
 ]
 
 export default function Speaker() {
