@@ -8,11 +8,11 @@ const LEADERBOARD_DATA = [
   { model: 'OpenAI o3-mini', rate: 0.8, safe: true },
   { model: 'Claude 3.5 Sonnet', rate: 1.4, safe: true },
   { model: 'GPT-4o', rate: 3.0, safe: true },
+  { model: 'Llama 3.2', rate: 6.0, safe: false },
   { model: 'Claude 3 Opus', rate: 10.1, safe: false },
   { model: 'GPT-3.5 Turbo', rate: 15.5, safe: false },
-  { model: 'Gemma-1.1-2B', rate: 27.8, safe: false },
-  { model: 'Falcon-7B', rate: 29.9, safe: false },
-  { model: 'GPT-4.5', rate: 37.1, safe: false },
+  { model: 'Llama 3.1-8B', rate: 27.8, safe: false },
+  { model: 'GPT-4.5 (SimpleQA)', rate: 37.1, safe: false },
 ]
 
 const STUDIES = [
@@ -40,6 +40,14 @@ const STUDIES = [
     finding: 'IA pode subestimar vulnerabilidades estruturais, ignorar danos e produzir previsões otimistas demais durante otimização.',
     url: 'https://www.sciencedirect.com/science/article/pii/S1226798825003186',
   },
+  {
+    icon: 'scale',
+    color: '#FF6B35',
+    title: '206+ casos judiciais (até jul/2025)',
+    authors: 'LawNext / American Bar Association',
+    finding: 'Advogados multados em US$ 3.000–31.100 por citações falsas geradas por IA. 90% dos casos ocorreram em 2025. Ferramentas afetadas: ChatGPT, CoCounsel, Gemini.',
+    url: 'https://www.lawnext.com/2025/05/ai-hallucinations-strike-again-two-more-cases-where-lawyers-face-judicial-wrath-for-fake-citations.html',
+  },
 ]
 
 export default function HallucinationRates() {
@@ -49,11 +57,11 @@ export default function HallucinationRates() {
       <div className="mb-12">
         <h3 className="text-lg font-bold text-city-navy mb-4">Vectara Hallucination Leaderboard (2025)</h3>
         <div className="bg-city-navy/5 rounded-2xl p-6">
-          <ResponsiveContainer width="100%" height={250}>
-            <BarChart data={LEADERBOARD_DATA} layout="vertical" margin={{ left: 130, right: 30 }}>
+          <ResponsiveContainer width="100%" height={280}>
+            <BarChart data={LEADERBOARD_DATA} layout="vertical" margin={{ left: 140, right: 30 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
               <XAxis type="number" domain={[0, 40]} tick={{ fill: '#6b7280', fontSize: 12 }} unit="%" />
-              <YAxis type="category" dataKey="model" tick={{ fill: '#0A1628', fontSize: 13, fontWeight: 500 }} width={120} />
+              <YAxis type="category" dataKey="model" tick={{ fill: '#0A1628', fontSize: 13, fontWeight: 500 }} width={130} />
               <Tooltip
                 contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: 8 }}
                 formatter={(value) => [`${value}%`, 'Taxa de alucinação']}
@@ -66,14 +74,36 @@ export default function HallucinationRates() {
               </Bar>
             </BarChart>
           </ResponsiveContainer>
-          <p className="text-xs text-gray-500 mt-2 text-center">Fonte: Vectara Hallucination Leaderboard, abril 2025</p>
+          <div className="flex flex-col sm:flex-row items-center justify-between mt-2 gap-2">
+            <p className="text-xs text-gray-500">
+              Fontes:{' '}
+              <a href="https://huggingface.co/spaces/vectara/leaderboard" target="_blank" rel="noopener noreferrer" className="text-city-blue hover:text-city-cyan transition-colors underline">
+                Vectara Leaderboard
+              </a>
+              {' · '}
+              <a href="https://www.allaboutai.com/resources/ai-statistics/ai-hallucinations/" target="_blank" rel="noopener noreferrer" className="text-city-blue hover:text-city-cyan transition-colors underline">
+                AllAboutAI Report 2026
+              </a>
+              {' · '}
+              <a href="https://openai.com/index/introducing-simpleqa/" target="_blank" rel="noopener noreferrer" className="text-city-blue hover:text-city-cyan transition-colors underline">
+                OpenAI SimpleQA
+              </a>
+            </p>
+          </div>
+          <p className="text-xs text-gray-400 mt-2 italic text-center">
+            Nota: em benchmarks mais exigentes (
+            <a href="https://arxiv.org/abs/2509.07968" target="_blank" rel="noopener noreferrer" className="underline hover:text-city-cyan transition-colors">
+              SimpleQA Verified, 2025
+            </a>
+            ), até modelos de ponta mostram 15–30% de alucinação.
+          </p>
         </div>
       </div>
 
       {/* Studies */}
       <div className="mb-10">
-        <h3 className="text-lg font-bold text-city-navy mb-4">Estudos Científicos Relevantes</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <h3 className="text-lg font-bold text-city-navy mb-4">Estudos e Dados Relevantes</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {STUDIES.map((study, i) => (
             <motion.a
               key={i}
@@ -99,7 +129,7 @@ export default function HallucinationRates() {
               <p className="text-sm text-gray-600 leading-relaxed mb-3">{study.finding}</p>
               <div className="flex items-center gap-1 text-xs font-semibold group-hover:text-city-cyan transition-colors" style={{ color: study.color }}>
                 <Icon name="external-link" size={12} />
-                Abrir estudo
+                Abrir fonte
               </div>
             </motion.a>
           ))}

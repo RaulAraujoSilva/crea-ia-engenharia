@@ -1,7 +1,13 @@
 import { motion } from 'framer-motion'
 import Section from '../components/Section'
-import StatCounter from '../components/StatCounter'
 import Icon from '../components/Icon'
+
+const SOURCE_LINKS = {
+  spivack: { label: 'Nova Spivack, "The Hidden Cost Crisis"', url: 'https://www.novaspivack.com/technology/the-hidden-cost-crisis' },
+  frontiers: { label: 'Plevris & Hosamo, Frontiers 2025', url: 'https://www.frontiersin.org/journals/built-environment/articles/10.3389/fbuil.2025.1612575/full' },
+  vectara: { label: 'Vectara Leaderboard + OpenAI SimpleQA', url: 'https://huggingface.co/spaces/vectara/leaderboard' },
+  asce: { label: 'ASCE, Civil Engineering Magazine 2025', url: 'https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/issues/magazine-issue/article/2025/03/mishandling-ai-tools-puts-civil-engineers-at-risk-for-ethical-violations' },
+}
 
 const COMPARISONS = [
   {
@@ -9,34 +15,68 @@ const COMPARISONS = [
     reality: '96% dos cálculos estruturais com IA precisam de revisão humana',
     hypeIcon: 'trending-up',
     realityIcon: 'alert-triangle',
+    source: SOURCE_LINKS.frontiers,
   },
   {
     hype: '"Economia de 90% do tempo"',
-    reality: 'Tempo real inclui verificação, correção e validação',
+    reality: 'Funcionários gastam 4,3h/semana verificando saídas de IA — ~US$ 14.200/ano por pessoa em overhead',
     hypeIcon: 'trending-up',
     realityIcon: 'alert-triangle',
+    source: SOURCE_LINKS.spivack,
   },
   {
     hype: '"100% de precisão"',
-    reality: 'Gemini: 0,7% de erro. GPT-4.5: 37,1% de erro',
+    reality: 'Gemini 2.0 Flash: 0,7% de erro. GPT-4.5: 37,1% de erro',
     hypeIcon: 'trending-up',
     realityIcon: 'alert-triangle',
+    source: SOURCE_LINKS.vectara,
   },
   {
     hype: '"Qualquer IA faz cálculo estrutural"',
     reality: 'Nenhuma IA tem certificação para cálculo sem responsável técnico',
     hypeIcon: 'trending-up',
     realityIcon: 'alert-triangle',
+    source: SOURCE_LINKS.asce,
   },
 ]
+
+function SourceLink({ label, url }: { label: string; url: string }) {
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1 mt-2 text-xs text-gray-400 hover:text-city-cyan transition-colors"
+    >
+      <Icon name="external-link" size={10} />
+      {label}
+    </a>
+  )
+}
 
 export default function HypeVsReality() {
   return (
     <Section id="hype-vs-reality" title="O Hype vs. a Realidade" subtitle="O que o LinkedIn não conta" dark>
-      {/* Stat destaque */}
+      {/* Stat destaque — cores claras para fundo escuro */}
       <div className="mb-12 p-8 rounded-2xl border-2 border-city-red/30 bg-city-red/5 text-center">
-        <StatCounter value={67.4} suffix=" bi" prefix="US$ " label="em perdas causadas por alucinações de IA em 2024 (AllAboutAI Report)" />
-        <p className="mt-2 text-sm text-gray-400">47% dos usuários corporativos tomaram decisões baseadas em conteúdo alucinado</p>
+        <div className="text-4xl md:text-5xl font-extrabold text-white">
+          <span className="text-city-red">US$ </span>
+          67,4
+          <span className="text-city-red"> bi</span>
+        </div>
+        <p className="mt-2 text-base text-gray-200 font-medium">
+          em perdas causadas por alucinações de IA em 2024
+        </p>
+        <p className="mt-1 text-sm text-gray-400">47% dos usuários corporativos tomaram decisões baseadas em conteúdo alucinado</p>
+        <a
+          href="https://www.novaspivack.com/technology/the-hidden-cost-crisis"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 mt-3 text-xs text-gray-400 hover:text-city-cyan transition-colors"
+        >
+          <Icon name="external-link" size={10} />
+          Fonte: Nova Spivack, "The Hidden Cost Crisis" Report
+        </a>
       </div>
 
       {/* LinkedIn vs Realidade */}
@@ -69,6 +109,7 @@ export default function HypeVsReality() {
                   <span className="text-xs font-bold text-city-red">A REALIDADE</span>
                 </div>
                 <p className="text-sm text-gray-300">{item.reality}</p>
+                <SourceLink label={item.source.label} url={item.source.url} />
               </div>
             </motion.div>
           ))}
