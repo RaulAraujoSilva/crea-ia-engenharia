@@ -3,19 +3,6 @@ import Section from '../components/Section'
 import Icon from '../components/Icon'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Cell, ReferenceLine, Tooltip } from 'recharts'
 
-/* Vectara Hallucination Leaderboard — novo dataset (docs longos, até 32K tokens)
-   Mais realista para uso profissional/engenharia */
-const VECTARA_DATA = [
-  { model: 'GPT-4.1', rate: 5.6, safe: true },
-  { model: 'Gemini 3.1 Pro', rate: 10.4, safe: false },
-  { model: 'Claude Sonnet 4.6', rate: 10.6, safe: false },
-  { model: 'GPT-5.2', rate: 10.8, safe: false },
-  { model: 'Claude Opus 4.6', rate: 12.2, safe: false },
-  { model: 'Gemini 3 Pro', rate: 13.6, safe: false },
-  { model: 'o4-mini', rate: 18.6, safe: false },
-  { model: 'Grok 4.1 Fast', rate: 20.2, safe: false },
-]
-
 /* AA-Omniscience — benchmark de conhecimento factual (6.000 perguntas, 42 tópicos)
    Taxa de alucinação = respostas incorretas / (incorretas + parciais + não tentadas)
    Fonte: artificialanalysis.ai/evaluations/omniscience */
@@ -69,73 +56,37 @@ const STUDIES = [
 export default function HallucinationRates() {
   return (
     <Section id="hallucination-rates" title="Alucinações: Os Números" subtitle="Benchmarks verificáveis e estudos científicos">
-      {/* Charts side by side */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
-        {/* Vectara — docs longos */}
-        <div>
-          <h3 className="text-lg font-bold text-city-navy mb-4">Vectara — Documentos Longos (2025)</h3>
-          <div className="bg-city-navy/5 rounded-2xl p-6">
-            <ResponsiveContainer width="100%" height={260}>
-              <BarChart data={VECTARA_DATA} layout="vertical" margin={{ left: 120, right: 30 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis type="number" domain={[0, 25]} tick={{ fill: '#6b7280', fontSize: 12 }} unit="%" />
-                <YAxis type="category" dataKey="model" tick={{ fill: '#0A1628', fontSize: 12, fontWeight: 500 }} width={110} />
-                <Tooltip
-                  contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: 8 }}
-                  formatter={(value) => [`${value}%`, 'Taxa de alucinação']}
-                />
-                <ReferenceLine x={5} stroke="#FF6B35" strokeDasharray="5 5" label={{ value: 'Limiar profissional', fill: '#FF6B35', fontSize: 10, position: 'top' }} />
-                <Bar dataKey="rate" radius={[0, 6, 6, 0]}>
-                  {VECTARA_DATA.map((entry, i) => (
-                    <Cell key={i} fill={entry.safe ? '#2DC653' : '#C62828'} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-            <p className="text-xs text-gray-500 mt-2 text-center">
-              Fonte:{' '}
-              <a href="https://huggingface.co/spaces/vectara/leaderboard" target="_blank" rel="noopener noreferrer" className="text-city-blue hover:text-city-cyan transition-colors underline">
-                Vectara Leaderboard (novo dataset)
-              </a>
-            </p>
-          </div>
-        </div>
-
-        {/* AA-Omniscience — conhecimento factual */}
-        <div>
-          <h3 className="text-lg font-bold text-city-navy mb-4">AA-Omniscience — Conhecimento Factual</h3>
-          <div className="bg-city-navy/5 rounded-2xl p-6">
-            <ResponsiveContainer width="100%" height={260}>
-              <BarChart data={OMNISCIENCE_DATA} layout="vertical" margin={{ left: 120, right: 30 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis type="number" domain={[0, 100]} tick={{ fill: '#6b7280', fontSize: 12 }} unit="%" />
-                <YAxis type="category" dataKey="model" tick={{ fill: '#0A1628', fontSize: 12, fontWeight: 500 }} width={110} />
-                <Tooltip
-                  contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: 8 }}
-                  formatter={(value) => [`${value}%`, 'Taxa de alucinação']}
-                />
-                <ReferenceLine x={30} stroke="#FF6B35" strokeDasharray="5 5" label={{ value: 'Limiar aceitável', fill: '#FF6B35', fontSize: 10, position: 'top' }} />
-                <Bar dataKey="rate" radius={[0, 6, 6, 0]}>
-                  {OMNISCIENCE_DATA.map((entry, i) => (
-                    <Cell key={i} fill={entry.safe ? '#2DC653' : '#C62828'} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-            <p className="text-xs text-gray-500 mt-2 text-center">
-              Fonte:{' '}
-              <a href="https://artificialanalysis.ai/evaluations/omniscience?omniscience-hallucination-rate=hallucination-rate" target="_blank" rel="noopener noreferrer" className="text-city-blue hover:text-city-cyan transition-colors underline">
-                Artificial Analysis, AA-Omniscience
-              </a>
-            </p>
-          </div>
+      {/* AA-Omniscience chart — full width */}
+      <div className="mb-12">
+        <h3 className="text-lg font-bold text-city-navy mb-4">AA-Omniscience — Conhecimento Factual (6.000 perguntas, 42 tópicos)</h3>
+        <div className="bg-city-navy/5 rounded-2xl p-6">
+          <ResponsiveContainer width="100%" height={320}>
+            <BarChart data={OMNISCIENCE_DATA} layout="vertical" margin={{ left: 140, right: 40 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+              <XAxis type="number" domain={[0, 100]} tick={{ fill: '#6b7280', fontSize: 13 }} unit="%" />
+              <YAxis type="category" dataKey="model" tick={{ fill: '#0A1628', fontSize: 13, fontWeight: 500 }} width={130} />
+              <Tooltip
+                contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: 8 }}
+                formatter={(value) => [`${value}%`, 'Taxa de alucinação']}
+              />
+              <ReferenceLine x={30} stroke="#FF6B35" strokeDasharray="5 5" label={{ value: 'Limiar aceitável para uso profissional', fill: '#FF6B35', fontSize: 11, position: 'top' }} />
+              <Bar dataKey="rate" radius={[0, 6, 6, 0]}>
+                {OMNISCIENCE_DATA.map((entry, i) => (
+                  <Cell key={i} fill={entry.safe ? '#2DC653' : '#C62828'} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+          <p className="text-xs text-gray-500 mt-2 text-center">
+            Fonte:{' '}
+            <a href="https://artificialanalysis.ai/evaluations/omniscience?omniscience-hallucination-rate=hallucination-rate" target="_blank" rel="noopener noreferrer" className="text-city-blue hover:text-city-cyan transition-colors underline">
+              Artificial Analysis, AA-Omniscience
+            </a>
+            {' · '}
+            Taxa = respostas incorretas / (incorretas + parciais + não tentadas) · Apenas ~4 de 310 modelos com índice positivo
+          </p>
         </div>
       </div>
-
-      <p className="text-xs text-gray-400 mb-8 italic text-center">
-        Nota: a taxa de alucinação varia drasticamente conforme o benchmark. Um mesmo modelo pode ter 1% em sumarização e 80%+ em conhecimento factual.
-        A escolha do benchmark importa tanto quanto o modelo.
-      </p>
 
       {/* Studies */}
       <div className="mb-10">
