@@ -37,11 +37,11 @@ export default function ToolUse() {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="w-32 h-16 rounded-xl bg-gradient-to-r from-city-blue to-city-cyan flex items-center justify-center text-white font-bold text-lg shadow-lg mb-2"
+            className="w-40 h-20 rounded-xl bg-gradient-to-r from-city-blue to-city-cyan flex items-center justify-center text-white font-bold text-2xl shadow-lg mb-2"
           >
             LLM
           </motion.div>
-          <div className="text-xs text-gray-400 mb-3 italic">"Preciso calcular isso..."</div>
+          <div className="text-sm text-gray-400 mb-3 italic">"Preciso calcular isso..."</div>
 
           {/* Arrows down */}
           <div className="flex gap-16 mb-2">
@@ -74,11 +74,11 @@ export default function ToolUse() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 + i * 0.1 }}
-                className="w-24 h-14 rounded-lg border-2 flex flex-col items-center justify-center gap-1"
+                className="w-28 h-16 rounded-lg border-2 flex flex-col items-center justify-center gap-1"
                 style={{ borderColor: t.color, backgroundColor: `${t.color}15` }}
               >
-                <Icon name={t.icon} size={16} style={{ color: t.color }} />
-                <span className="text-xs font-bold" style={{ color: t.color }}>{t.label}</span>
+                <Icon name={t.icon} size={20} style={{ color: t.color }} />
+                <span className="text-sm font-bold" style={{ color: t.color }}>{t.label}</span>
               </motion.div>
             ))}
           </div>
@@ -98,7 +98,7 @@ export default function ToolUse() {
           {/* Resource labels */}
           <div className="flex gap-4">
             {['Banco de\nDados', 'Código\nLocal', 'Serviços\nExternos'].map((label, i) => (
-              <div key={i} className="w-24 text-center text-[10px] text-gray-500 font-medium whitespace-pre-line">
+              <div key={i} className="w-28 text-center text-xs text-gray-500 font-medium whitespace-pre-line">
                 {label}
               </div>
             ))}
@@ -112,8 +112,8 @@ export default function ToolUse() {
             transition={{ delay: 0.8 }}
             className="mt-6 p-4 rounded-xl bg-city-blue/5 border border-city-blue/20 max-w-sm"
           >
-            <p className="text-xs text-gray-500 font-bold mb-2">Exemplo de fluxo:</p>
-            <div className="flex items-center gap-2 text-xs text-gray-600">
+            <p className="text-sm text-gray-500 font-bold mb-2">Exemplo de fluxo:</p>
+            <div className="flex items-center gap-2 text-sm text-gray-600">
               <span className="px-2 py-1 bg-white rounded border border-gray-200 font-medium shrink-0">"Calcule a estrutura"</span>
               <span className="text-city-blue">→</span>
               <span className="px-2 py-1 bg-blue-50 rounded border border-blue-200 font-medium shrink-0">API Cálculo</span>
@@ -132,17 +132,17 @@ export default function ToolUse() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="rounded-xl border-2 p-5"
+              className="rounded-xl border-2 p-6"
               style={{ borderColor: `${tool.color}30`, backgroundColor: `${tool.color}05` }}
             >
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${tool.color}15` }}>
-                  <Icon name={tool.icon} size={20} style={{ color: tool.color }} />
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${tool.color}15` }}>
+                  <Icon name={tool.icon} size={24} style={{ color: tool.color }} />
                 </div>
-                <h3 className="text-base font-bold text-city-navy">{tool.name}</h3>
+                <h3 className="text-lg font-bold text-city-navy">{tool.name}</h3>
               </div>
-              <p className="text-sm text-gray-600 leading-relaxed">{tool.desc}</p>
-              <p className="text-xs text-gray-400 mt-2">
+              <p className="text-base text-gray-600 leading-relaxed">{tool.desc}</p>
+              <p className="text-sm text-gray-400 mt-2">
                 <span className="font-semibold">Ex.:</span> {tool.examples}
               </p>
             </motion.div>

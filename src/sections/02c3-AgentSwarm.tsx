@@ -19,13 +19,13 @@ function AgentNode({ label, sub, color, icon, delay = 0 }: { label: string; sub:
       className="flex flex-col items-center gap-1"
     >
       <div
-        className="w-14 h-14 rounded-xl border-2 flex items-center justify-center shadow-lg"
+        className="w-16 h-16 rounded-xl border-2 flex items-center justify-center shadow-lg"
         style={{ borderColor: color, backgroundColor: `${color}20` }}
       >
-        <Icon name={icon} size={22} style={{ color }} />
+        <Icon name={icon} size={26} style={{ color }} />
       </div>
-      <span className="text-xs font-bold text-white text-center leading-tight">{label}</span>
-      <span className="text-[10px] text-gray-400 text-center leading-tight">{sub}</span>
+      <span className="text-sm font-bold text-white text-center leading-tight">{label}</span>
+      <span className="text-xs text-gray-400 text-center leading-tight">{sub}</span>
     </motion.div>
   )
 }
@@ -50,18 +50,18 @@ function ParallelBlock({ label, color, agents }: { label: string; color: string;
       style={{ borderColor: `${color}40`, backgroundColor: `${color}08` }}
     >
       <div className="flex items-center gap-2 mb-3">
-        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: color }} />
-        <span className="text-xs font-bold uppercase tracking-wider" style={{ color }}>{label}</span>
-        <span className="text-[10px] text-gray-500 ml-1">× múltiplos em paralelo</span>
+        <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: color }} />
+        <span className="text-sm font-bold uppercase tracking-wider" style={{ color }}>{label}</span>
+        <span className="text-xs text-gray-500 ml-1">× múltiplos em paralelo</span>
       </div>
-      <div className="flex justify-center gap-6">
+      <div className="flex justify-center gap-8">
         {agents.map((a, i) => (
           <div key={i} className="flex flex-col items-center gap-1">
-            <div className="w-12 h-12 rounded-lg border flex items-center justify-center" style={{ borderColor: `${color}50`, backgroundColor: `${color}15` }}>
-              <Icon name={a.icon} size={18} style={{ color }} />
+            <div className="w-14 h-14 rounded-lg border flex items-center justify-center" style={{ borderColor: `${color}50`, backgroundColor: `${color}15` }}>
+              <Icon name={a.icon} size={22} style={{ color }} />
             </div>
-            <span className="text-[11px] font-semibold text-white">{a.name}</span>
-            <span className="text-[9px] text-gray-400">{a.sub}</span>
+            <span className="text-sm font-semibold text-white">{a.name}</span>
+            <span className="text-xs text-gray-400">{a.sub}</span>
           </div>
         ))}
       </div>
@@ -83,10 +83,10 @@ export default function AgentSwarm() {
             className="px-6 py-3 rounded-xl border-2 flex items-center gap-3 shadow-lg mb-1"
             style={{ borderColor: COLORS.orch, backgroundColor: `${COLORS.orch}15` }}
           >
-            <Icon name="cpu" size={24} style={{ color: COLORS.orch }} />
+            <Icon name="cpu" size={28} style={{ color: COLORS.orch }} />
             <div>
-              <span className="text-base font-bold" style={{ color: COLORS.orch }}>ORQUESTRADOR</span>
-              <p className="text-[10px] text-gray-400">Coordena, distribui tarefas, consolida</p>
+              <span className="text-lg font-bold" style={{ color: COLORS.orch }}>ORQUESTRADOR</span>
+              <p className="text-sm text-gray-400">Coordena, distribui tarefas, consolida</p>
             </div>
           </motion.div>
 
@@ -131,7 +131,7 @@ export default function AgentSwarm() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6 }}
-            className="flex items-center gap-2 mt-3 text-[10px] text-gray-500 italic"
+            className="flex items-center gap-2 mt-3 text-sm text-gray-500 italic"
           >
             <Icon name="refresh-cw" size={12} className="text-gray-500" />
             QA reporta bugs → Dev corrige → QA retesta (loop automático)
@@ -139,7 +139,7 @@ export default function AgentSwarm() {
         </div>
 
         {/* Right: Key concepts */}
-        <div className="flex flex-col gap-4 lg:max-w-xs">
+        <div className="flex flex-col gap-4 lg:max-w-sm">
           {[
             { icon: 'cpu', color: COLORS.orch, title: 'Orquestrador', desc: 'Decide qual agente ativar, distribui tarefas, consolida resultados. Mantém visão global do projeto.' },
             { icon: 'user', color: COLORS.spec, title: 'Especialização', desc: 'Cada agente tem prompt, ferramentas e contexto próprios. O analista não programa; o dev não documenta.' },
@@ -152,14 +152,14 @@ export default function AgentSwarm() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 + i * 0.1 }}
-              className="rounded-lg border p-3 bg-white/5"
+              className="rounded-lg border p-4 bg-white/5"
               style={{ borderColor: `${c.color}30` }}
             >
-              <div className="flex items-center gap-2 mb-1">
-                <Icon name={c.icon} size={14} style={{ color: c.color }} />
-                <span className="text-sm font-bold text-white">{c.title}</span>
+              <div className="flex items-center gap-2 mb-2">
+                <Icon name={c.icon} size={18} style={{ color: c.color }} />
+                <span className="text-base font-bold text-white">{c.title}</span>
               </div>
-              <p className="text-xs text-gray-300 leading-relaxed">{c.desc}</p>
+              <p className="text-sm text-gray-300 leading-relaxed">{c.desc}</p>
             </motion.div>
           ))}
         </div>
