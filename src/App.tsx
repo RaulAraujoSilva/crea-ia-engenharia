@@ -3,6 +3,7 @@ import Hero from './sections/01-Hero'
 import Speaker from './sections/02-Speaker'
 import Evolution from './sections/02b-Evolution'
 import Benchmarks from './sections/02b2-Benchmarks'
+import AIIQEvolution from './sections/02b3-AIIQEvolution'
 import TimelineLLMs from './sections/02d-TimelineLLMs'
 import ChatVsAgents from './sections/02c-ChatVsAgents'
 // import Quiz from './sections/04-Quiz'
@@ -41,6 +42,7 @@ function App() {
         {/* A IA Hoje */}
         <Evolution />
         <Benchmarks />
+        <AIIQEvolution />
         <TimelineLLMs />
         <ChatVsAgents />
 

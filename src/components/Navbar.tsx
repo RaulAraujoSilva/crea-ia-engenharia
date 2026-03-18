@@ -6,6 +6,7 @@ const sections = [
   { id: 'speaker', label: 'Palestrante', icon: 'user' },
   { id: 'evolution', label: 'Evolução', icon: 'trending-up' },
   { id: 'benchmarks', label: 'Benchmarks', icon: 'bar-chart' },
+  { id: 'ai-iq-evolution', label: 'QI da IA', icon: 'trending-up' },
   { id: 'timeline-llms', label: 'Timeline LLMs', icon: 'clock' },
   { id: 'chat-vs-agents', label: 'Chat→Agentes', icon: 'bot' },
   // { id: 'quiz', label: 'Quiz', icon: 'bar-chart' },
