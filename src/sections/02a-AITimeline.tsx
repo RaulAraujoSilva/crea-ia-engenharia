@@ -138,7 +138,7 @@ const EVENTS = [
 ]
 
 /* Height tiers for staggering (px from the timeline axis) */
-const OFFSETS = [4, 24, 44]
+const OFFSETS = [6, 32, 58]
 
 export default function AITimeline() {
   return (
@@ -149,7 +149,7 @@ export default function AITimeline() {
       dark
     >
       {/* Container: fixed height to fit one viewport */}
-      <div className="relative" style={{ height: 520 }}>
+      <div className="relative" style={{ height: 620 }}>
         {/* Central timeline line */}
         <div className="absolute left-0 right-0 top-1/2 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
@@ -175,11 +175,11 @@ export default function AITimeline() {
             >
               {/* Dot on the axis */}
               <div
-                className="absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 z-10"
+                className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 z-10"
                 style={{
                   borderColor: evt.color,
                   backgroundColor: evt.color,
-                  top: -6,
+                  top: -8,
                 }}
               />
 
@@ -199,23 +199,23 @@ export default function AITimeline() {
                 href={evt.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute left-1/2 -translate-x-1/2 w-[7.5rem] rounded-lg border p-2 hover:shadow-lg transition-all group"
+                className="absolute left-1/2 -translate-x-1/2 w-36 rounded-lg border p-2.5 hover:shadow-lg transition-all group"
                 style={{
                   borderColor: `${evt.color}40`,
                   backgroundColor: `${evt.color}0c`,
                   ...(isAbove
-                    ? { bottom: stemH + 8 }
-                    : { top: stemH + 8 }),
+                    ? { bottom: stemH + 10 }
+                    : { top: stemH + 10 }),
                 }}
               >
-                <div className="flex items-center gap-1 mb-1">
-                  <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: evt.color }} />
-                  <span className="text-[10px] font-bold" style={{ color: evt.color }}>{evt.year}</span>
+                <div className="flex items-center gap-1.5 mb-1">
+                  <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: evt.color }} />
+                  <span className="text-xs font-bold" style={{ color: evt.color }}>{evt.year}</span>
                 </div>
-                <h4 className="text-[11px] font-bold text-white leading-tight">{evt.label}</h4>
-                <p className="text-[9px] text-gray-400 leading-snug mt-1">{evt.desc}</p>
-                <span className="inline-flex items-center gap-0.5 mt-1 text-[8px] text-gray-500 group-hover:text-city-cyan transition-colors">
-                  <Icon name="external-link" size={7} />
+                <h4 className="text-sm font-bold text-white leading-tight">{evt.label}</h4>
+                <p className="text-[11px] text-gray-300 leading-snug mt-1">{evt.desc}</p>
+                <span className="inline-flex items-center gap-0.5 mt-1.5 text-[10px] text-gray-500 group-hover:text-city-cyan transition-colors">
+                  <Icon name="external-link" size={9} />
                   {evt.src}
                 </span>
               </a>
