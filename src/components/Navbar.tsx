@@ -10,6 +10,8 @@ const sections = [
   { id: 'ai-iq-evolution', label: 'QI da IA', icon: 'trending-up' },
   // { id: 'timeline-llms', label: 'Timeline LLMs', icon: 'clock' },
   { id: 'chat-vs-agents', label: 'Chat→Agentes', icon: 'bot' },
+  { id: 'tool-use', label: 'Tool Use', icon: 'server' },
+  { id: 'agent-swarm', label: 'Swarm', icon: 'users' },
   // { id: 'quiz', label: 'Quiz', icon: 'bar-chart' },
   { id: 'where-ai-works', label: 'Onde Funciona', icon: 'check-circle' },
   { id: 'cases-compliance', label: 'Compliance', icon: 'check-square' },
