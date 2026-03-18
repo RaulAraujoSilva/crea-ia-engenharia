@@ -5,7 +5,7 @@ import AITimeline from './sections/02a-AITimeline'
 import Evolution from './sections/02b-Evolution'
 import Benchmarks from './sections/02b2-Benchmarks'
 import AIIQEvolution from './sections/02b3-AIIQEvolution'
-import TimelineLLMs from './sections/02d-TimelineLLMs'
+// import TimelineLLMs from './sections/02d-TimelineLLMs'
 import ChatVsAgents from './sections/02c-ChatVsAgents'
 // import Quiz from './sections/04-Quiz'
 import WhereAIWorks from './sections/05-WhereAIWorks'
@@ -45,7 +45,7 @@ function App() {
         <Evolution />
         <Benchmarks />
         <AIIQEvolution />
-        <TimelineLLMs />
+        {/* TimelineLLMs agora integrado em Evolution (Carrossel dos LLMs) */}
         <ChatVsAgents />
 
         {/* Interação 1 — comentado: sem tempo para dinâmica em palestra presencial */}
