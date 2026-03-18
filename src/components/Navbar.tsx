@@ -4,6 +4,7 @@ import Icon from './Icon'
 const sections = [
   { id: 'hero', label: 'Início', icon: 'home' },
   { id: 'speaker', label: 'Palestrante', icon: 'user' },
+  { id: 'ai-timeline', label: 'Timeline IA', icon: 'clock' },
   { id: 'evolution', label: 'Evolução', icon: 'trending-up' },
   { id: 'benchmarks', label: 'Benchmarks', icon: 'bar-chart' },
   { id: 'ai-iq-evolution', label: 'QI da IA', icon: 'trending-up' },

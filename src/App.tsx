@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import Hero from './sections/01-Hero'
 import Speaker from './sections/02-Speaker'
+import AITimeline from './sections/02a-AITimeline'
 import Evolution from './sections/02b-Evolution'
 import Benchmarks from './sections/02b2-Benchmarks'
 import AIIQEvolution from './sections/02b3-AIIQEvolution'
@@ -40,6 +41,7 @@ function App() {
         <Speaker />
 
         {/* A IA Hoje */}
+        <AITimeline />
         <Evolution />
         <Benchmarks />
         <AIIQEvolution />
